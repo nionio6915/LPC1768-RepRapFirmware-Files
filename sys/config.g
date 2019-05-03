@@ -33,7 +33,7 @@ M574 X1 Y1 S0                            ; Set active low endstops
 
 ; Z-Probe
 M574 Z1 S2                               ; Set endstops controlled by probe
-M558 P5 I0 R0.4 H5 F600 T6000            ; Set Z probe type to effector and the dive height + speeds
+M558 P5 I1 R0.4 H5 F600 T6000            ; Set Z probe type to effector and the dive height + speeds
 G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and trigger height
 M557 X15:295 Y15:295 S70                 ; Define mesh grid
 

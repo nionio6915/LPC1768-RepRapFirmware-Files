@@ -53,6 +53,7 @@ You will have to mod your RRD cables as shown. Its pretty simple to cut the firs
 10 Menu files - work in progress. Here are the links I am trying to follow - 
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
+Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
