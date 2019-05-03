@@ -4,11 +4,10 @@ https://github.com/sdavi/RepRapFirmware
 
 This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
 
-Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard may be required in order to revert back or update.
+Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard may be required in order to revert back or update. More on that later. 
 
 reprap.org forum discussion here- 
 https://reprap.org/forum/read.php?147,810214
-
 
 I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
 
@@ -35,6 +34,23 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 5. Use the online configurator - https://configurator.reprapfirmware.org/Start
   Once you get through the config wizard, it will build you a package of 'sys' files to download. Dowload them and put them in the 'sys' folder on the SD card.  
+
+6. Put the card in the board and power up / reset. 
+Using something like Octoprint or Printerface look at the terminal output. It should show you that it booted and processed the config files. 
+
+7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
+
+8. Here is the tedious part, you can not access the SD card by normal methods yet. I used to be able to mount the SD card via the raspi and read/write the config files on it directly. 
+You HAVE to sneakernet it for now... 
+
+9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. 
+For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's typo saying its for Vicki2) -
+scroll doewn to "RRD Full Graphic Smart Display"
+http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-display-installation
+
+You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connectot to connect to the baord. 
+
+
 
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
