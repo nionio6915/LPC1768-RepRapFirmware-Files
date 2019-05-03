@@ -50,8 +50,7 @@ http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-d
 
 You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connectot to connect to the baord. 
 
-
-
+10 Menu files - work in progress. Here are the links I am trying to follow - 
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 
