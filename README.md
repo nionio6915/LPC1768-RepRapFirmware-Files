@@ -55,3 +55,6 @@ You will have to mod your RRD cables as shown. Its pretty simple to cut the firs
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
+
+TBD: 
+Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d. 
