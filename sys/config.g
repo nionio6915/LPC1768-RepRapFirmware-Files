@@ -38,9 +38,12 @@ G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and
 M557 X15:295 Y15:295 S70                 ; Define mesh grid
 
 ; Heaters
-M307 H0 B0 S1.00                         ; Disable bang-bang mode for the bed heater and set PWM limit
-M305 P0 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 0
+; BED
+M307 H0 B1                               ; djp edit for bang-bang mode for the bed heater
+; M307 H0 B0 S1.00                         ; Disable bang-bang mode for the bed heater and set PWM limit
+; M305 P0 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 0
 M143 H0 S120                             ; Set temperature limit for heater 0 to 120C
+; HOT END 
 M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1
 M143 H1 S280                             ; Set temperature limit for heater 1 to 280C
 
