@@ -37,7 +37,9 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 6. Put the card in the board and power up / reset. 
 Using something like Octoprint or Printerface look at the terminal output. It should show you that it booted and processed the config files. 
-https://i.imgur.com/iSYCzE0.png
+
+![](images/Octoprint_Capture.PNG)
+
 
 7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
 
@@ -56,9 +58,10 @@ You will have to mod your RRD cables as shown. Its pretty simple to cut the firs
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
 
-https://i.imgur.com/iRAlgL8.png
-
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
+
+![](images/Menu_Capture.PNG)
+
 
 TBD: 
 Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d. 
