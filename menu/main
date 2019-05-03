@@ -1,0 +1,9 @@
+text R0 C0 F1 TMy Super 3D Printer 
+image Lreprapimg.bin
+text R15 C0 F0 TBed temp 
+alter N180 W30
+text T actual 
+value N80 W30
+button R27 C0 TPreheat PLA AM98 P#0 LmacrosPreheat PLA
+button R39 C0 TPreheat ABS AM98 P#0 LmacrosPreheat ABS
+button R51 C0 TSelect file to print Amenu LlistFiles
