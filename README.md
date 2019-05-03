@@ -51,7 +51,7 @@ For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's 
 scroll doewn to "RRD Full Graphic Smart Display"
 http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-display-installation
 
-You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connectot to connect to the baord. 
+You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connector to connect to the board. 
 
 10 Menu files - work in progress. Here are the links I am trying to follow - 
 
