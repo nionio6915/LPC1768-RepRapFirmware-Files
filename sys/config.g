@@ -36,7 +36,7 @@ M574 Z1 S2                               ; Set endstops controlled by probe
 M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
 ; M558 P5 I1 R0.4 H5 F600 T6000            ; Set Z probe type to effector and the dive height + speeds
 G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and trigger height
-M557 X15:295 Y15:295 S70                 ; Define mesh grid
+M557 X5:300 Y5:300 S100                 ; Define mesh grid
 
 ; Heaters
 ; BED
@@ -60,5 +60,5 @@ G10 P0 R0 S0                             ; Set initial tool 0 active and standby
 ; Automatic saving after power loss is not enabled
 
 ; Custom settings are not configured
-M918 P1 E2                               ; enable the LCD 
+M918 P1 E4 F1000000                      ; enable the LCD 
 ; https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
