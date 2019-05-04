@@ -33,7 +33,8 @@ M574 X1 Y1 S0                            ; Set active low endstops
 
 ; Z-Probe
 M574 Z1 S2                               ; Set endstops controlled by probe
-M558 P5 I1 R0.4 H5 F600 T6000            ; Set Z probe type to effector and the dive height + speeds
+M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
+; M558 P5 I1 R0.4 H5 F600 T6000            ; Set Z probe type to effector and the dive height + speeds
 G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and trigger height
 M557 X15:295 Y15:295 S70                 ; Define mesh grid
 
@@ -48,7 +49,7 @@ M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for h
 M143 H1 S280                             ; Set temperature limit for heater 1 to 280C
 
 ; Fans
-M106 P0 S0 I0 F500 H T45                 ; Set fan 0 value, PWM signal inversion and frequency. Thermostatic control is turned on
+M106 P0 S0 I0 F500 H-1 T45                 ; Set fan 0 value, PWM signal inversion and frequency. Thermostatic control is turned on
 M106 P1 S1 I0 F500 H1 T45                ; Set fan 1 value, PWM signal inversion and frequency. Thermostatic control is turned on
 
 ; Tools
