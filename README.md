@@ -68,4 +68,7 @@ Nest I am going to try this, from Phaedrux's post on the duet forums,
 https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
 
 TBD: 
-Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d. 
+Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d.
+
+E-Stop- I want estop function for the other endstops. My drivers cant do stall detection, considering this method. 
+https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
