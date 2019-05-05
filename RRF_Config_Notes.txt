@@ -32,6 +32,6 @@ M305 P0 T100000 B3950 R4700 L54 H-97    ; Kapton bed heater thermistor
 M305 P1 R4700 T100000 B4725 C7.06e-8    ; E3D V6 Semitec GT-104 thermistor cartridge
 
 ; Heater configuration
-M307 H0 B1                            ; Heater 0 (bed) use bang-bang control        
+M307 H0 B1                           ; Heater 0 (bed) use bang-bang control        
 M307 H1 A562.9 C267.0 D9.0 B0        ; Heater 1 (hot end) use PID -- increased gain by 10% (wes was 512.9)
 M570 H1 S120 P10 T10            ; WES, minimize faults a bit 120sec wait on startup, 10 deg excursion 10 seconds
