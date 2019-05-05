@@ -39,7 +39,7 @@ G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and
 M557 X2:302 Y2:302 S100                  ; Define mesh grid
 
 ; Heaters
-M305 P0 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 0
+M305 P0 T100000 B4100 R4700              ; Set thermistor + ADC parameters for heater 0
 M304 H0 P97.7 I4.537 D166.2              ; djp add results from PID tuning
 M143 H0 S120                             ; Set temperature limit for heater 0 to 120C
 M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1
