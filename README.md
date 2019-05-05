@@ -60,7 +60,7 @@ Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump 
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
-![](images/Menu_Capture.PNG)
+![](images/menus.png)
 
 
 TBD: 
