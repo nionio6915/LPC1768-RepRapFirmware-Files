@@ -36,12 +36,14 @@ M574 Z1 S2                               ; Set endstops controlled by probe
 M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
 ; M558 P5 I1 R0.4 H5 F600 T600           ; Set Z probe type to effector and the dive height + speeds
 G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and trigger height
-M557 X5:300 Y5:300 S100                  ; Define mesh grid
+M557 X2:302 Y2:302 S100                  ; Define mesh grid
 
 ; Heaters
 M305 P0 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 0
+M304 H0 P97.7 I4.537 D166.2              ; djp add results from PID tuning
 M143 H0 S120                             ; Set temperature limit for heater 0 to 120C
 M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1
+M304 H1 P24.1 I1.059 D52.3               ; djp add results from PID tuning
 M143 H1 S280                             ; Set temperature limit for heater 1 to 280C
 
 
