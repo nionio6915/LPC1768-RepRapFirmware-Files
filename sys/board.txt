@@ -9,7 +9,7 @@
 //ReArm configured for Bed, Extruder and Cooling Fan
 
 // ReArm Leds:
-//Play - 4.28;
+// Play - 4.28;
 
 
 //LED blinks to indicate Platform is spinning or other diagnostic 
@@ -48,7 +48,7 @@ heat.spiTempSensorCSPins = { }
 // Fan PWM pins. If not assigned pin does not support HWPwm, or HWPWM not running at desired fan RPM, 
 // then also add to Timers array below
 // Current maximum of 2 fans supported
-fan.pins = {2.4};
+fan.pins = {2.4}   ; Pin D9 on RAMPS
 
 // Pins used for Fan RPM measurement. Needs to be on Port 0 or Port 2.
 // Note: This pin must also appear in the externalInterruptPins below to enable the interrupt
