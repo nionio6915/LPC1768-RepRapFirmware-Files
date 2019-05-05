@@ -39,20 +39,17 @@ G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and
 M557 X5:300 Y5:300 S100                  ; Define mesh grid
 
 ; Heaters
-; BED
-M307 H0 B1                               ; djp edit for bang-bang mode for the bed heater
-; M307 H0 B0 S1.00                         ; Disable bang-bang mode for the bed heater and set PWM limit
 M305 P0 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 0
 M143 H0 S120                             ; Set temperature limit for heater 0 to 120C
-; HOT END 
 M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1
 M143 H1 S280                             ; Set temperature limit for heater 1 to 280C
 
+
 ; Fans
 M106 P0 H-1                              ; Set fan 0 value, PWM signal inversion and frequency. 
-                                         ; Thermostatic control is turned on
+; Thermostatic control is turned on
 ; M106 P1 S1 I0 F500 H1 T45                ; Set fan 1 value, PWM signal inversion and frequency. 
-                                         ; Thermostatic control is turned on
+; Thermostatic control is turned on
 
 ; Tools
 M563 P0 D0 H1                            ; Define tool 0

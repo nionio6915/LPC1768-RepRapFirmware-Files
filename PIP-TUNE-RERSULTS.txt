@@ -1,0 +1,61 @@
+
+Changing monitoring state from "Connecting" to "Operational"
+Send: N0 M110 N0*125
+Recv: ok
+Send: N1 M115*39
+Recv: FIRMWARE_NAME: RepRapFirmware for LPC176x based Boards FIRMWARE_VERSION: 2.03beta2+1 ELECTRONICS: LPC176x FIRMWARE_DATE: 2019-03-25b5
+Recv: ok
+Send: M21
+Recv: SD card mounted in slot 0, capacity 7.97Gb
+Recv: ok
+Send: M117 IP 192.168.0.20
+Recv: ok
+Send: M115
+Recv: FIRMWARE_NAME: RepRapFirmware for LPC176x based Boards FIRMWARE_VERSION: 2.03beta2+1 ELECTRONICS: LPC176x FIRMWARE_DATE: 2019-03-25b5
+Recv: ok
+[...]
+Send: M303 H1 S255
+Recv: Auto tuning heater 1 using target temperature 255.0��C and PWM 1.00 - do not leave printer unattended
+Recv: ok
+[...]
+Recv: Auto tune phase 1, heater on
+[...]
+Send: M106 S255
+Recv: ok
+[...]
+Recv: Auto tune phase 2, heater off
+[...]
+Recv: Auto tune phase 3, peak temperature was 258.3
+[...]
+Recv: Auto tune heater 1 completed in 317 sec
+Recv: Use M307 H1 to see the result, or M500 to save the result in config-override.g
+[...]
+Send: M307 H1
+Recv: Heater 1 model: gain 399.3, time constant 167.2, dead time 3.1, max PWM 1.00, calibration voltage 0.0, mode PID, inverted no, frequency default
+Recv: Computed PID parameters for setpoint change: P24.1, I1.059, D52.3
+
+Send: M307 H1
+Recv: Heater 1 model: gain 399.3, time constant 167.2, dead time 3.1, max PWM 1.00, calibration voltage 0.0, mode PID, inverted no, frequency default
+Recv: Computed PID parameters for setpoint change: P24.1, I1.059, D52.3
+Communication timeout while idle, trying to trigger response from printer. Configure long running commands or increase communication timeout if that happens regularly on specific commands or long moves.
+[...]
+Recv: Computed PID parameters for load change: P24.1ok T0:86.1 /0.0 B:20.8 /0.0
+
+
+[...]
+Send: M303 H0 S100
+Recv: Auto tuning heater 0 using target temperature 100.0��C and PWM 1.00 - do not leave printer unattended
+Recv: ok
+[...]
+Recv: Auto tune phase 1, heater on
+[...]
+Recv: Auto tune phase 2, heater off
+[...]
+Recv: Auto tune phase 3, peak temperature was 101.1
+[...]
+Recv: Auto tune heater 0 completed in 347 sec
+Recv: Use M307 H0 to see the result, or M500 to save the result in config-override.g
+[...]
+Send: M307 H0
+Recv: Heater 0 model: gain 143.3, time constant 190.7, dead time 2.4, max PWM 1.00, calibration voltage 0.0, mode PID, inverted no, frequency default
+Recv: Computed PID parameters for setpoint change: P97.7, I4.537, D166.2
