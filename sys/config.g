@@ -29,7 +29,7 @@ M208 X0 Y0 Z0 S1                         ; Set axis minima
 M208 X305 Y305 Z290 S0                   ; Set axis maxima
 
 ; Endstops
-M574 X1 Y1 S0                            ; Set active low endstops
+M574 X2 Y2 S0                            ; M574 X1 Y1 S0  Set active low endstops
 
 ; Z-Probe
 M574 Z1 S2                               ; Set endstops controlled by probe
