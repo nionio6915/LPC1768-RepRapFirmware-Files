@@ -7,13 +7,17 @@ This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update. More on that later. 
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
-Eustathios Version 2. Cartesian gantry printer. ReArm with Ramps 1.4, DVR8825 modules. Piezo pribe at the hotend. 
-https://forum.makerforums.info/c/herculien
+Eustathios Version 2. Cartesian gantry printer. 
+ReArm with Ramps 1.4, DVR8825 modules.
+Piezo pribe at the hotend. 
+Discussion moved from G+ (RIP) to https://forum.makerforums.info/c/herculien
 
 ![](images/EV2.png)
 
-reprap.org forum discussion here- 
+Experiemntal port of LPC1768 RepRapFirmware RepRap.org forum discussion here- 
 https://reprap.org/forum/read.php?147,810214
+
+--------------------------------------------------------
 
 I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
 
@@ -40,7 +44,18 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 5. Use the online configurator - https://configurator.reprapfirmware.org/Start
   Once you get through the config wizard, it will build you a package of 'sys' files to download. Dowload them and put them in the 'sys' folder on the SD card.  
+ This is the bit that took me the longest. I had to work through endstops- I used to use all 6, but am now limited to 3. 
+ My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180.
+ My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config. trying to use the configurator calculator would result in a negative value. 
+ 
+ Changes to the local configs dont seem to get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits.  What ended up workign for me was to ignore those entries and use the online configurator to generate the files and selectivly copy the bits that I needed. 
 
+5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo'
+What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode refernce for all options. 
+   M558 P8 I1 R0.4 H2 F400 T6000            
+ My Z probe trigger value ended up being ~0.08mm. set it with G31 command. 
+   G31 P500 X0 Y0 Z0.08 
+ 
 6. Put the card in the board and power up / reset. 
 Using something like Octoprint or Printerface look at the terminal output. It should show you that it booted and processed the config files. 
 
