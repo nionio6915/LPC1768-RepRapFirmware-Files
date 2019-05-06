@@ -1,0 +1,5 @@
+button R0 C5 F0 T"BACK " A"return"
+button R10 C5 T"Back Left" A"G1 X5 Y290|G30 S-1"
+button R20 C5 T"Front Left" A"G1 X5 Y5|G30 S-1"
+button R30 C5 T"Middle Right" A"G1 X290 Y148|G30 S-1"
+button R40 C5 T"Center" A"G1 X148 Y148|G30 S-1"
