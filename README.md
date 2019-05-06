@@ -40,7 +40,6 @@ Using something like Octoprint or Printerface look at the terminal output. It sh
 
 ![](images/Octoprint_Capture.PNG)
 
-
 7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
 
 8. Here is the tedious part, you can not access the SD card by normal methods yet. I used to be able to mount the SD card via the raspi and read/write the config files on it directly. 
@@ -60,8 +59,16 @@ Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump 
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
-![](images/Menu_Capture.PNG)
+From Greg3d: 
+'Should you want to use this menu system as a starting point, you can get it here : https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
 
+![](images/menus.png)
+
+Nest I am going to try this, from Phaedrux's post on the duet forums,  
+https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
 
 TBD: 
-Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d. 
+Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d.
+
+E-Stop- I want estop function for the other endstops. My drivers cant do stall detection, considering this method. 
+https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
