@@ -35,7 +35,7 @@ M574 X1 Y1 S0                            ; Set active low endstops
 M574 Z1 S2                               ; Set endstops controlled by probe
 M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
 ; M558 P5 I1 R0.4 H5 F600 T600           ; Set Z probe type to effector and the dive height + speeds
-G31 P500 X0 Y0 Z0.15                     ; Set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y0 Z0.08                     ; Set Z probe trigger value, offset and trigger height
 M557 X2:302 Y2:302 S100                  ; Define mesh grid
 
 ; Heaters
