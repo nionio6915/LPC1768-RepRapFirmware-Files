@@ -8,6 +8,9 @@ Note: This firmware does not show up as a mass storage device when connected to 
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
 Eustathios Version 2. Cartesian gantry printer. ReArm with Ramps 1.4, DVR8825 modules. Piezo pribe at the hotend. 
+https://forum.makerforums.info/c/herculien
+
+![](images/EV2.png)
 
 reprap.org forum discussion here- 
 https://reprap.org/forum/read.php?147,810214
