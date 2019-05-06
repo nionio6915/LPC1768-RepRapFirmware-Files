@@ -4,7 +4,10 @@ https://github.com/sdavi/RepRapFirmware
 
 This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
 
-Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard may be required in order to revert back or update. More on that later. 
+Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update. More on that later. 
+
+My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
+Eustathios Version 2. Cartesian gantry printer. ReArm with Ramps 1.4, DVR8825 modules. Piezo pribe at the hotend. 
 
 reprap.org forum discussion here- 
 https://reprap.org/forum/read.php?147,810214
@@ -55,20 +58,28 @@ You will have to mod your RRD cables as shown. Its pretty simple to cut the firs
 10 Menu files - work in progress. Here are the links I am trying to follow - 
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
+
 Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
+You need to enable the LCD via M918 command. M918 P1 F1000000 in case M918 P1 F2000000 does not work.  
 
+The Simple_Menu folder contains- 
 From Greg3d: 
 'Should you want to use this menu system as a starting point, you can get it here : https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
 
 ![](images/menus.png)
-
+The Complex_Menu filder contains these menus with my edits 
 Nest I am going to try this, from Phaedrux's post on the duet forums,  
 https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
 
 TBD: 
-Network Interface. Ethernet module from Panacutt seems to be foever out of stock. HOping that an ESP8266 might work in its place, similar to ESP3d.
+Network Interface. Ethernet module from Panacutt seems to be foever out of stock. 
+
+No word if standard LAN8720 adapter might work, like this guide to connecting a LAN8720 to an LPC1768 microcontroller. 
+https://os.mbed.com/users/hudakz/notebook/using-lan8720-modules-as-ethernet-interface-for-cu/
+
+ESP8266 appears that it will work with Tx/RX pins on the RAMPS board in the conventional ESP3D way. This will provide a standard serial to WiFi bridge as a host to the printer just like Octprint and Pronterface. 
 
 E-Stop- I want estop function for the other endstops. My drivers cant do stall detection, considering this method. 
 https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
