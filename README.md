@@ -6,7 +6,8 @@ This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard may be required in order to revert back or update. More on that later. 
 
-reprap.org forum discussion here- 
+reprap.org forum discussion here-
+ 
 https://reprap.org/forum/read.php?147,810214
 
 I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
@@ -34,6 +35,7 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 5. Use the online configurator - https://configurator.reprapfirmware.org/Start
   Once you get through the config wizard, it will build you a package of 'sys' files to download. Dowload them and put them in the 'sys' folder on the SD card.  
+   Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 
 6. Put the card in the board and power up / reset. 
 Using something like Octoprint or Printerface look at the terminal output. It should show you that it booted and processed the config files. 

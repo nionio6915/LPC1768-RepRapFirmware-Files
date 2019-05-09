@@ -1,12 +1,12 @@
-//Config file to define Hardware Pins LPC Boards.
-//Note: Each line should be less than 120 characters.
+//    Config file to define Hardware Pins LPC Boards.
+//     Note: Each line should be less than 120 characters.
 //    : Unwanted options can be commented out or set to NoPin. Lines commented out will get default values
 //    : for pins the default is NoPin.
 //    : Values for Arrays need to be contained within { and }
 //    : Comments can be defined with // or # (comments are not supported inside arrays)
 //    : Each config entry must be all on a single line.
 
-//ReArm configured for Bed, Extruder and Cooling Fan
+//    : ReArm configured for Bed, Extruder and Cooling Fan
 
 // ReArm Leds:
 // Play - 4.28;
