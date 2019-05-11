@@ -1,11 +1,9 @@
 # LPC1768-RepRapFirmware-Files
-ReARM config files for using sdavi's port of RepRapFirmware
+ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
 
-https://github.com/sdavi/RepRapFirmware
-
-This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
-
-Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update. More on that later. 
+"This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
+...
+Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update." More on that later. 
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
 Eustathios Version 2. Cartesian gantry printer. 
