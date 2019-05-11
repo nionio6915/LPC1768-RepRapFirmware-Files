@@ -1,24 +1,34 @@
 button R0 C0 F0 T" BACK " A"return"
 text T" "
+button R0 C64 T"COOLDOWN" A"M98 P#0" L"/menu/cooldown"
 image R11 C0 L"hline.img"
-text R18 C0 F0 T"Bed"
-button C23 T"Off" A"M140 S0"
-button C45 T"60" A"M140 S60"
-button C65 T"70" A"M140 S70"
-button C85 T"90" A"M140 S90"
-button C105 T"110" V3 A"M140 S110"
-text R33 C0 F0 T"E"
+image R13 C4 L"bed.img"
+button C19 T"Off" A"M140 S0"
+button C45 T"50" A"M140 S50"
+button C68 T"80" A"M140 S80"
+button C87 T"90" A"M140 S90"
+button C108 T"110" V3 A"M140 S110"
+image R25 C4 L"nozzle.img"
 button C19 T"Off" A"M104 S0"
 button C41 T"130" A"M104 S130"
 button C62 T"200" A"M104 S200"
-button C83 T"210" A"M104 S210"
-button C104 T"230" A"M104 S230"
-image R51 C0 L"hline.img"
-text R53 C2 F0 T"Bed "
-value N180
+button C83 T"230" A"M104 S230"
+button C104 T"245" A"M104 S245"
+image R37 C0 L"hline.img"
+image R39 C10 L"bed.img"
+value H2 N180 W20
 text T"/"
-value N80
-text T" E "
-value N100
+value N80 W20
+image L"nozzle.img"
+value H2 N100 W20
 text T"/"
-value N0
+value N0 W20
+image R50 C0 L"hline.img"
+text R52 C4 "IP Addr:"
+value H2 N530 W20
+text "."
+value H2 N531 W20
+text "."
+value H2 N532 W20
+text "."
+value H2 N533 W20

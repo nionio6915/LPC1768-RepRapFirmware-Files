@@ -1,3 +1,5 @@
+; After using the http://configurator.reprapfirmware.org you need to comment out a few lines
+;
 ; Configuration file for Duet WiFi (firmware version 1.21)
 ; executed by the firmware on start-up
 ;
@@ -15,27 +17,14 @@ M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
 M569 P1 S1  T1.9:1.0:0.65:0.65           ; Drive 1 goes forwards
 M569 P2 S1  T1.9:1.0:0.65:0.65           ; Drive 2 goes forwards
 M569 P3 S1  T1.9:1.0:0.65:0.65           ; Drive 3 goes forwards
-M350 X32 Y32 I0                          ; Configure microstepping without interpolation
-M350 Z16 E16 I1                          ; Configure microstepping with interpolation
+; M350 X32 Y32 I0                          ; SPI Not Supported Configure microstepping without interpolation
+; M350 Z16 E16 I1                          ; SPI Not Supported Configure microstepping with interpolation
 M92 X160.00 Y160.00 Z1600.00 E195.54     ; Set steps per mm
-;
-; M566 X900.00 Y900.00 Z12.00 E120.00      ; Set maximum instantaneous speed changes (mm/min)
-M566 X900.00 Y900.00 Z15.00 E300.00      ; Set maximum instantaneous speed changes (mm/min) 15, 0.2, 27mm/sec 
-
-; M203 X6000.00 Y6000.00 Z180.00 E1200.00  ; Set maximum speeds (mm/min)
-M203 X8000.00 Y8000.00 Z180.00 E1200.00    ; Set maximum speeds (mm/min) 133, 30, 20mm/sec
-
-; M201 X500.00 Y500.00 Z20.00 E250.00      ; Set accelerations (mm/s^2)
+M566 X900.00 Y900.00 Z12.00 E120.00      ; Set maximum instantaneous speed changes (mm/min)
+M203 X6000.00 Y6000.00 Z180.00 E1200.00  ; Set maximum speeds (mm/min)
 M201 X500.00 Y500.00 Z20.00 E250.00      ; Set accelerations (mm/s^2)
-
-; M906 X800.00 Y800.00 Z800.00 E800.00 I30 ; Set motor currents (mA) and motor idle factor in per cent
-M906 X800.00 Y800.00 Z800.00 E800.00 I30 ; Set motor currents (mA) and motor idle factor in per cent
-
+; M906 X800.00 Y800.00 Z800.00 E800.00 I30 ;  SPI Not Supported Set motor currents (mA) and motor idle factor in per cent
 M84 S30                                  ; Set idle timeout
-; M203 X18000 Y18000 Z1600 E2400         ; Wes corexy Set maximum speeds (mm/min)  
-; - keep in sync with macros/ZPostprint.g
-; M201 X3825 Y3825 Z400 E2000            ; Wes corexy Set accelerations (mm/s^2)
-; M566 X400 Y400 Z16 E1600               ; Wes corexy Set maximum instantaneous speed changes (mm/min)
 
 ; Axis Limits
 M208 X0 Y0 Z0 S1                         ; Set axis minima
@@ -43,17 +32,17 @@ M208 X302 Y302 Z290 S0                   ; Set axis maxima
 
 ; Endstops
 M574 X2 Y2 S0                            ; Set active low endstops
-
+                                         ; X & Y endstops are at the MAX travel
 ; Z-Probe
 M574 Z1 S2                               ; Set endstops controlled by probe
 M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
 ; M558 P5 I1 R0.4 H5 F600 T600           ; Set Z probe type to effector and the dive height + speeds
-G31 P500 X0 Y0 Z0.20                     ; Set Z probe trigger value, offset and trigger height
-M557 X0:300 Y0:300 S75                  ; Define mesh grid
+G31 P500 X0 Y0 Z0.08                     ; Set Z probe trigger value, offset and trigger height
+M557 X5:285 Y5:285 S70                  ; Define mesh grid
 
 ; ESTOP SWITCHES
-M581 T0 E0 S0 C0                           ; emergency stop on trigger, E0 switch, falling edge, apply at all times
-M581 T0 E1 S0 C0  
+; M581 T0 E0 S0 C0                           ; emergency stop on trigger, E0 switch, falling edge, apply at all times
+; M581 T0 E1 S0 C0 
 
 ; Heaters
 M305 P0 T100000 B4100 R4700              ; Set thermistor + ADC parameters for heater 0
