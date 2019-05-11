@@ -47,11 +47,12 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
    Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 
 --------------------------------------------------------
- This is the bit that took me the longest. I had to work through endstops- I used to use all 6, but am now limited to 3. 
- My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180.
- My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config. trying to use the configurator calculator would result in a negative value. 
+This is the bit that took me the longest. I had to work through endstops- I used to use all 6, but am now limited to 3. 
+My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180.
  
- Changes to the local configs don't get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits.  What ended up working for me was to ignore those entries and use the online configurator to generate the files and selectivly copy the bits that I needed. 
+My heatbed uses an MG18 thermistor- I could not figure out how to configure it. trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 
+ 
+Changes to the local configs don't get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits.  What ended up working for me was to use the online configurator to generate new config files and selectivly copy the bits that I needed back into my working configs. 
 
 5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo'
 What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode refernce for all options. 
@@ -64,35 +65,39 @@ Using something like Octoprint or Printerface look at the terminal output. It sh
 
 ![](images/Octoprint_Capture.PNG)
 
-7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
+7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. 
 
-8. Here is the tedious part, you can not access the SD card by normal methods yet. You HAVE to sneakernet it for now... 
+Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
+
+8. Here is the tedious part, you can not access the SD card by normal methods yet. You HAVE to sneakernet it for now... any changes to the configs I would shut down, remove the card, put the card in an adapter on teh PC then edit the configs. Reverse and repeat.
 
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. 
-For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's typo saying its for Vicki2) -
-scroll doewn to "RRD Full Graphic Smart Display"
+
+For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's typo saying its for Vicki2) - scroll doewn to "RRD Full Graphic Smart Display"
+
 http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-display-installation
 
 You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connector to connect to the board. 
 
-10 Menu files - work in progress. Here are the links I am trying to follow - 
+10 LCD and Menu files - work in progress. Here are the links I am trying to follow - 
+
+https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
+
+You need to enable the LCD via M918 command. M918 P1 F1000000 in case M918 P1 F2000000 does not work.  
+
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 
 Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
 
-https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
-You need to enable the LCD via M918 command. M918 P1 F1000000 in case M918 P1 F2000000 does not work.  
-
-The Simple_Menu folder contains- 
-From Greg3d: 
-'Should you want to use this menu system as a starting point, you can get it here : https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
+The Simple_Menu folder contains menus from Greg3d on a twitter post: 
+https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
 
 ![](images/menus.png)
-The Complex_Menu filder contains these menus with my edits 
-Nest I am going to try this, from Phaedrux's post on the duet forums,  
+The Complex_Menu folder contains these menus with my edits. These are what I am using currently. Thanks Phaedrux's on the duet forums for pointing me there,  
 https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
 
+--------------------------------------------------------
 TBD: 
 Network Interface. Ethernet module from Panacutt seems to be foever out of stock. 
 
@@ -107,5 +112,5 @@ https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
 Driver Timings: With the DRV8825's, I got MUCH better prints using the timings from the datasheet. There is a dicsussion on the reprap thread.  
 M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
 
-Bed Leveling - 
+Bed Leveling - trying to get output on the LCD for probing the bed via G30 S-1. Info is available on the host/terminal but not currently displayed on the LCD. 
 
