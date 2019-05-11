@@ -1,15 +1,12 @@
 # LPC1768-RepRapFirmware-Files
 ReARM config files for using sdavi's port of RepRapFirmware
+
 https://github.com/sdavi/RepRapFirmware
 
 This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update. More on that later. 
 
-<<<<<<< HEAD
-reprap.org forum discussion here-
- 
-=======
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
 Eustathios Version 2. Cartesian gantry printer. 
 ReArm with Ramps 1.4, DVR8825 modules.
@@ -18,8 +15,8 @@ Discussion moved from G+ (RIP) to https://forum.makerforums.info/c/herculien
 
 ![](images/EV2.png)
 
-Experiemntal port of LPC1768 RepRapFirmware RepRap.org forum discussion here- 
->>>>>>> d641dd7d4fa54b5997b14a8bf69f1d844f202a91
+Experiemntal port of LPC1768 RepRapFirmware RepRap.org forum discussion here-
+
 https://reprap.org/forum/read.php?147,810214
 
 --------------------------------------------------------
@@ -49,23 +46,21 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 5. Use the online configurator - https://configurator.reprapfirmware.org/Start
   Once you get through the config wizard, it will build you a package of 'sys' files to download. Dowload them and put them in the 'sys' folder on the SD card.  
-<<<<<<< HEAD
    Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 
-=======
+--------------------------------------------------------
  This is the bit that took me the longest. I had to work through endstops- I used to use all 6, but am now limited to 3. 
  My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180.
  My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config. trying to use the configurator calculator would result in a negative value. 
  
- Changes to the local configs dont seem to get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits.  What ended up workign for me was to ignore those entries and use the online configurator to generate the files and selectivly copy the bits that I needed. 
+ Changes to the local configs don't get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits.  What ended up working for me was to ignore those entries and use the online configurator to generate the files and selectivly copy the bits that I needed. 
 
 5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo'
 What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode refernce for all options. 
    M558 P8 I1 R0.4 H2 F400 T6000            
  My Z probe trigger value ended up being ~0.08mm. set it with G31 command. 
    G31 P500 X0 Y0 Z0.08 
- 
->>>>>>> d641dd7d4fa54b5997b14a8bf69f1d844f202a91
+
 6. Put the card in the board and power up / reset. 
 Using something like Octoprint or Printerface look at the terminal output. It should show you that it booted and processed the config files. 
 
@@ -73,8 +68,7 @@ Using something like Octoprint or Printerface look at the terminal output. It sh
 
 7. Slowly, gently start testing stuff. Depending on your setup, start testing motors and heater. Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
 
-8. Here is the tedious part, you can not access the SD card by normal methods yet. I used to be able to mount the SD card via the raspi and read/write the config files on it directly. 
-You HAVE to sneakernet it for now... 
+8. Here is the tedious part, you can not access the SD card by normal methods yet. You HAVE to sneakernet it for now... 
 
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. 
 For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's typo saying its for Vicki2) -
@@ -111,3 +105,9 @@ ESP8266 appears that it will work with Tx/RX pins on the RAMPS board in the conv
 
 E-Stop- I want estop function for the other endstops. My drivers cant do stall detection, considering this method. 
 https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
+
+Driver Timings: With the DRV8825's, I got MUCH better prints using the timings from the datasheet. There is a dicsussion on the reprap thread.  
+M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
+
+Bed Leveling - 
+
