@@ -1,6 +1,5 @@
 button R0 C5 F0 T"BACK " A"return"
-button R10 C5 T"Back Left" A"G1 X5 Y290|G30 S-1|G1 Z0.1"
-alter R10 C72 H2 N501 
-button R20 C5 T"Front Left" A"G1 X5 Y5|G30 S-1"G1 Z0.1
-button R30 C5 T"Middle Right" A"G1 X290 Y148|G30 S-1|G1 Z0.1"
-button R40 C5 T"Center" A"G1 X148 Y148|G30 S-1|G1 Z0.1"
+button R10 C5 T"Back Left Z0.2" A"G1 Z4|G1 X5 Y290 |G1 Z0.2"
+button R20 C5 T"Front Left Z0.2" A"G1 Z4| G1 X5 Y5|G1 Z0.2"
+button R30 C5 T"Middle Right Z0.2" A"G1 Z4|G1 X290 Y148|G1 Z0.2"
+button R40 C5 T"Center Z0.2" A"G1 Z4|G1 X148 Y148|G1 Z0.2"

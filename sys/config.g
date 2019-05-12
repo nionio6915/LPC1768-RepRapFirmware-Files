@@ -13,16 +13,20 @@ M83                                      ; ...but relative extruder moves
 M552 S0                                  ; Disable network
 
 ; Drives
-M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
-M569 P1 S1  T1.9:1.0:0.65:0.65           ; Drive 1 goes forwards
+M569 P0 S1  
+; T1.9:1.0:0.65:0.65           
+; Drive 0 goes forwards
+M569 P1 S1  
+; T1.9:1.0:0.65:0.65           
+; Drive 1 goes forwards
 M569 P2 S1  T1.9:1.0:0.65:0.65           ; Drive 2 goes forwards
 M569 P3 S1  T1.9:1.0:0.65:0.65           ; Drive 3 goes forwards
 ; M350 X32 Y32 I0                          ; SPI Not Supported Configure microstepping without interpolation
 ; M350 Z16 E16 I1                          ; SPI Not Supported Configure microstepping with interpolation
 M92 X160.00 Y160.00 Z1600.00 E195.54     ; Set steps per mm
-M566 X900.00 Y900.00 Z12.00 E120.00      ; Set maximum instantaneous speed changes (mm/min)
-M203 X6000.00 Y6000.00 Z180.00 E1200.00  ; Set maximum speeds (mm/min)
-M201 X500.00 Y500.00 Z20.00 E250.00      ; Set accelerations (mm/s^2)
+M566 X600.00 Y600.00 Z12.00 E240.00      ; Set maximum instantaneous speed changes (mm/min)
+M203 X17500.00 Y17500.00 Z900.00 E1800.00  ; Set maximum speeds (mm/min)
+M201 X5100.00 Y5100.00 Z200.00 E600.00      ; Set accelerations (mm/s^2)
 ; M906 X800.00 Y800.00 Z800.00 E800.00 I30 ;  SPI Not Supported Set motor currents (mA) and motor idle factor in per cent
 M84 S30                                  ; Set idle timeout
 
@@ -37,7 +41,7 @@ M574 X2 Y2 S0                            ; Set active low endstops
 M574 Z1 S2                               ; Set endstops controlled by probe
 M558 P8 I1 R0.4 H2 F400 T6000            ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed
 ; M558 P5 I1 R0.4 H5 F600 T600           ; Set Z probe type to effector and the dive height + speeds
-G31 P500 X0 Y0 Z0.08                     ; Set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y0 Z0.0                     ; Set Z probe trigger value, offset and trigger height
 M557 X5:285 Y5:285 S70                  ; Define mesh grid
 
 ; ESTOP SWITCHES
