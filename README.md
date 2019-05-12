@@ -47,7 +47,17 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
    Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 
 --------------------------------------------------------
-This is the bit that took me the longest. I had to work through endstops- I used to use all 6, but am now limited to 3. 
+This is the bit that took me the longest. 
+
+Stepper Drivers: Unlike Marlin, you should/need to add Stepper Driver Timings to your config.
+
+![](images/Timing.png)
+
+As an example, here is Z motor using a DRV8825 motor. 
+
+M569 P2 S1  T1.9:1.0:0.65:0.65 
+
+I had to work through endstops- I used to use all 6, but am now limited to 3. 
 My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180.
  
 My heatbed uses an MG18 thermistor- I could not figure out how to configure it. trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 

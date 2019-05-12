@@ -13,10 +13,10 @@ M83                                      ; ...but relative extruder moves
 M552 S0                                  ; Disable network
 
 ; Drives
-M569 P0 S1  
+M569 P0 S1  T0.1:0.1:0.02:0.02
 ; T1.9:1.0:0.65:0.65           
 ; Drive 0 goes forwards
-M569 P1 S1  
+M569 P1 S1  T0.1:0.1:0.02:0.02
 ; T1.9:1.0:0.65:0.65           
 ; Drive 1 goes forwards
 M569 P2 S1  T1.9:1.0:0.65:0.65           ; Drive 2 goes forwards
