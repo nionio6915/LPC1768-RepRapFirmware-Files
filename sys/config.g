@@ -26,7 +26,8 @@ M569 P3 S1  T1.9:1.0:0.65:0.65           ; Drive 3 goes forwards
 M92 X160.00 Y160.00 Z1600.00 E195.54     ; Set steps per mm
 M566 X600.00 Y600.00 Z12.00 E240.00      ; Set maximum instantaneous speed changes (mm/min)
 M203 X17500.00 Y17500.00 Z900.00 E1800.00  ; Set maximum speeds (mm/min)
-M201 X5100.00 Y5100.00 Z200.00 E600.00      ; Set accelerations (mm/s^2)
+M201 X1500.00 Y1500.00 Z200.00 E600.00   ; After M201 tuning in KISS Set accelerations (mm/s^2) 
+; M201 X5100.00 Y5100.00 Z200.00 E600.00 ; Set accelerations (mm/s^2)
 ; M906 X800.00 Y800.00 Z800.00 E800.00 I30 ;  SPI Not Supported Set motor currents (mA) and motor idle factor in per cent
 M84 S30                                  ; Set idle timeout
 

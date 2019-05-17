@@ -1,12 +1,5 @@
 Archive.zip
 images/menus.xcf
 AzteegX5MiniCartesian.zip
-do-not-index/sd6128_user_guide.pdf
-do-not-index/timings.xlsx
-do-not-index/drv8825.pdf
-do-not-index/THB6128-HHBY.pdf
-do-not-index/THB6128-ETC.pdf
-do-not-index/THB6128 IC Instructions.pdf
-do-not-index/RADDS_UserGuide_V2_reprapme.pdf
-do-not-index/DM422Cm.pdf
+do-not-index/*
 sys/heightmap.csv
