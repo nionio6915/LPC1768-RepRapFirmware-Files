@@ -108,7 +108,9 @@ This graphic is REALLY rough, but will give you the idea of what is going on wit
 
 ![](images/curent_menu.png)
 
-Menu Icons- I worked up a spreadhsheet to create menu icon files. Toggle the 0's and 1's to make pixel maps and associated binary code for icon files.  
+Menu Icons- I worked up a spreadhsheet to create menu icon files. Toggle the 0's and 1's to make pixel maps and associated binary code for icon files.  See the 'Image Creator Spreadsheet'
+
+Under the control menu is a 'Bed Leveling' option. I use a Precision Piezo sensor and have the machine probe the 3 bed leveling points and dispaly the output on the LCD via G30 S-1, similar to the info that is available on the host/terminal. NOTE: YOUR PROBE/NOZZLE WILL BE LEFT TOUCHING THE BED. YOU SHOULD RAISE Z TO ADJUST THE BED!
 
 --------------------------------------------------------
 TBD: 
@@ -124,6 +126,4 @@ https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
 
 Driver Timings: With the DRV8825's, I got MUCH better prints using the timings from the datasheet. There is a dicsussion on the reprap thread.  
 M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
-
-Bed Leveling - trying to get output on the LCD for probing the bed via G30 S-1. Info is available on the host/terminal but not currently displayed on the LCD. 
 
