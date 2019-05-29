@@ -50,8 +50,7 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 This is the bit that took me the longest. 
 
 Stepper Drivers: Unlike Marlin, you should/need to add Stepper Driver Timings to your config.
-
-![](images/Timing.png)
+![](images/Timings.png)
 
 As an example, here is Z motor using a DRV8825 motor. 
 
@@ -95,7 +94,6 @@ https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_displ
 
 You need to enable the LCD via M918 command. M918 P1 F1000000 in case M918 P1 F2000000 does not work.  
 
-
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 
 Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
@@ -103,9 +101,14 @@ Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump 
 The Simple_Menu folder contains menus from Greg3d on a twitter post: 
 https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
 
-![](images/menus.png)
-The Complex_Menu folder contains these menus with my edits. These are what I am using currently. Thanks Phaedrux's on the duet forums for pointing me there,  
+The Complex_Menu and current menu folder contains the menus with my editsof what I am using currently. Thanks Phaedrux's on the duet forums for pointing me there,  
 https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
+
+This graphic is REALLY rough, but will give you the idea of what is going on with menu capabilities. 
+
+![](images/curent_menu.png)
+
+Menu Icons- I worked up a spreadhsheet to create menu icon files. Toggle the 0's and 1's to make pixel maps and associated binary code for icon files.  
 
 --------------------------------------------------------
 TBD: 
