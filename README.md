@@ -104,7 +104,7 @@ https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=
 The Complex_Menu and current menu folder contains the menus with my editsof what I am using currently. Thanks Phaedrux's on the duet forums for pointing me there,  
 https://github.com/mudcruzr/Duet-Maestro-12864-Menu-Files
 
-This graphic is REALLY rough, but will give you the idea of what is going on with menu capabilities. 
+This graphic is REALLY rough, but will give you the idea of what is going on with menu capabilities. You can directly control and adjust temperature for the bed and hotend, adjust the flow rate, fan speed etc. from the main menu. There are sub-menus for movign axis, setting temps, etc... Oncve you start a print, you have the option to "BABYSTEP" and PAUSE/ABORT as well. 
 
 ![](images/curent_menu.png)
 
