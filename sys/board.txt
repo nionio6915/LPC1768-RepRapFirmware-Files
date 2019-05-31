@@ -48,7 +48,7 @@ heat.spiTempSensorCSPins = { }
 // Fan PWM pins. If not assigned pin does not support HWPwm, or HWPWM not running at desired fan RPM, 
 // then also add to Timers array below
 // Current maximum of 2 fans supported
-fan.pins = {2.4}   ; Pin D9 on RAMPS
+fan.pins = {2.4, 1.19}   ; Pin D9 on RAMPS, sERVO 3 Pin 1.19 for hotend fan
 
 // Pins used for Fan RPM measurement. Needs to be on Port 0 or Port 2.
 // Note: This pin must also appear in the externalInterruptPins below to enable the interrupt
@@ -73,7 +73,7 @@ lpc.fastPWM.pins = { };
 lpc.fastPWM.frequencyHz = 250; //250Hz (for Hotend/Fan PWM)
 
 // Note: Also add servo Pins to the SpecialPinMap Below so they get assigned a logical pin number
-lpc.servoPins = {1.20, 1.19, 1.21}; //Servo 1,2 and 3
+lpc.servoPins = {1.20, 1.21}; //Servo 1,2 and 3 REMOVE 1.19 FOR FAN
 
 
 lpc.externalInterruptPins = {}; //Max of 3 pins for Ext Interrupts. Must be on Port 0 or Port 2.
@@ -81,7 +81,7 @@ lpc.externalInterruptPins = {}; //Max of 3 pins for Ext Interrupts. Must be on P
 
 //Pins in the specialPinMap will have "logical pin numbers" 60-69 in RRF (max 10 special pins)
 //Array of any Servo/Extra/spare pins that can be controlled by M42 and M280
-specialPinMap = {1.20, 1.19, 1.21};
+specialPinMap = {1.20, 1.19, 1.21}; // REMOVE 1.19 
 
 
 
