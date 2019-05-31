@@ -113,7 +113,7 @@ Menu Icons- I worked up a spreadhsheet to create menu icon files. Toggle the 0's
 Under the control menu is a 'Bed Leveling' option. I use a Precision Piezo sensor and have the machine probe the 3 bed leveling points and dispaly the output on the LCD via G30 S-1, similar to the info that is available on the host/terminal. NOTE: YOUR PROBE/NOZZLE WILL BE LEFT TOUCHING THE BED. YOU SHOULD RAISE Z TO ADJUST THE BED!
 
 11. MOSFET controlled Hotend Fan & ATX_PSU. The logic of the LPC chip is 3.3V, so pins dont have enough umph to drive a fan or relay. I recycled a blown RAMPS 1.4 board and reused the STP55NF06L  MOSFETS. They can utilize a driving Volage as low as 2V and at about 2.5V can handle 15-16A of current, more than enough to control a fan or the atsPSU function. 
-
+Datasheet - https://www.st.com/resource/en/datasheet/stp55nf06l.pdf 
 Here is the protoype board wired up- 
 ![](images/mosfet.png)
 --------------------------------------------------------
