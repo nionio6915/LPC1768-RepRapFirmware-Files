@@ -15,7 +15,10 @@ button V2 T"  PAUSE        " A"M25"
 button R51 C0 F0 V6 T"  RESUME  " A"M24"
 button V6 T"  ABORT         " A"M0 H1"
 ;
-image R3 C2 L"d3d.img"
+;image R3 C2 L"d3d.img"
+; Power Buttons 
+button R0 C2 T"OFF" A"M81"
+button R11 C2 T"ON" A"M80" 
 ;
 image R0 C33 L"nozzle.img"
 alter R10 C16 H2 N100 W20
