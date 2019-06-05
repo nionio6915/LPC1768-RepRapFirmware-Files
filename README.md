@@ -3,17 +3,24 @@ ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/
 
 "This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
 ...
+
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update." More on that later. 
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
 Eustathios Version 2. Cartesian gantry printer. 
-ReArm with Ramps 1.4, DVR8825 modules.
-Piezo pribe at the hotend. 
 Discussion moved from G+ (RIP) to https://forum.makerforums.info/c/herculien
+
+ReArm with Ramps 1.4, SD2224 for X & Y, and DVR8825 for Z & Extruder
+Piezo probe at the hotend. 
 
 ![](images/EV2.png)
 
-Experiemntal port of LPC1768 RepRapFirmware RepRap.org forum discussion here-
+WHY:
+Marlin 2.0 was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.0 was NOT smooth or reliable. 
+
+Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work.    
+
+So looking at the landscape, there really wasn't much to be lost but everything to be gained by running the Experiemntal port of LPC1768 RepRapFirmware. The RepRap.org forum discussion is here-
 
 https://reprap.org/forum/read.php?147,810214
 
