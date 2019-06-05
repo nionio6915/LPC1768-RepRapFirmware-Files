@@ -1,7 +1,8 @@
 # LPC1768-RepRapFirmware-Files
 ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
 
-"This is an experimental port of dc42's RepRapFirmware) for LPC1768/LPC1769 based boards.
+This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards.
+These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR, maybe some others.   
 ...
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update." More on that later. 
@@ -130,7 +131,7 @@ Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn
 
 Network Interface. 
 
-The LPC1768 chips use a physical layer transiever. Ethernet module from Panacutt seems to be the best and easiest way. 
+The LPC1768/69 chips use a physical layer transiever. Ethernet module from Panacutt seems to be the best and easiest way. 
 http://www.panucatt.com/ProductDetails.asp?ProductCode=LAN8720
 
 Generic modules are reported to work with a bit of hacking. You have to solder a jumper on from the unused pin on the module header to the RX_ER pin trace on the PCB, like this guide to connecting a LAN8720 to an LPC1768 microcontroller. 
@@ -138,7 +139,7 @@ https://os.mbed.com/users/hudakz/notebook/using-lan8720-modules-as-ethernet-inte
 
 Keep in mind that to get the DWC rolled into the reduced memory footprint of the LPC chip, its limited to 1 HTTP session and file tansfer throughput will be slow.
 
-Currently, I have networking up and working but I get consistent timeouts. I am trying to verify its not a power issue or memory issue with the Complex Menus. 
+Currently, I have networking up and working but I get consistent netowrk timeouts. I am trying to verify its not a power issue or memory issue with the Complex Menus. But I have faith its fixable. 
 
 Octoprint -
 
