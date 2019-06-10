@@ -19,7 +19,7 @@ Piezo probe at the hotend.
 WHY:
 Marlin 2.0 was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.0 was NOT smooth or reliable. 
 
-Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work.    
+Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work, EVER.    
 
 So looking at the landscape, there really wasn't much to be lost but everything to be gained by running the Experiemntal port of LPC1768 RepRapFirmware. The RepRap.org forum discussion is here-
 
@@ -55,7 +55,7 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
    Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 
 --------------------------------------------------------
-This is the bit that took me the longest. 
+This is the bit that took me the longest to figure by reading the docs. RTFM!  
 
 Stepper Drivers: Unlike Marlin, you should/need to add Stepper Driver Timings to your config.
 ![](images/Timings.png)
@@ -92,13 +92,13 @@ Motors- issue home commands, but be ready to trip the endstops to stop motion. D
 
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. This is the ubiquitious RepRapDiscount Full Grapic LCD, 12864. 
 
-For REARM, it reads just like Panacutt's info for RRD display (don;t mind Roy's typo saying its for Vicki2) - scroll down to "RRD Full Graphic Smart Display"
+For REARM, it reads just like Panacutt's info for RRD display (don't mind Roy's typo saying its for Vicki2) - scroll down to "RRD Full Graphic Smart Display"
 
 http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-display-installation
 
 You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connector to connect to the board. I suggesting soldering a heavier wire leader being easier than trying to crimp the whisps of ribbon cable. 
 
-10 LCD and Menu files - Here are the links I followed - 
+10 LCD and Menu files - Here are the links I followed. Currently, the LCD menus as they are comsume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
@@ -126,7 +126,8 @@ Under the control menu is a 'Bed Leveling' option. (There is also a BL Touch fil
 
 Datasheet - https://www.st.com/resource/en/datasheet/stp55nf06l.pdf 
 
-Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn on the fan and PSU accordingly. Follow the Duet hardware scheamtic and you will be good. 
+Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn on the fan and PSU accordingly. Follow the Duet hardware scheamtic and you will be good. My previous pic had all the pins and GSD jumbled. Hopefully this is consistent now.
+
 ![](images/mosfet.png)
 
 Network Interface. 
@@ -139,7 +140,7 @@ https://os.mbed.com/users/hudakz/notebook/using-lan8720-modules-as-ethernet-inte
 
 Keep in mind that to get the DWC rolled into the reduced memory footprint of the LPC chip, its limited to 1 HTTP session and file tansfer throughput will be slow.
 
-Currently, I have networking up and working but I get consistent netowrk timeouts. I am trying to verify its not a power issue or memory issue with the Complex Menus. But I have faith its fixable. 
+I had networking and LCD menus enabled, but I would get consistent netowrk timeouts. As it turns out, the issue is not the networking module, but the LCD menus as they are consume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
 
 Octoprint -
 
