@@ -1,5 +1,10 @@
 ; "Not printing" Menu
 ;
+;image R3 C2 L"d3d.img"
+; Power Buttons 
+button R0 C2 T"OFF" A"M81"
+button R11 C2 T"ON" A"M80" 
+;
 button R51 C0 F0 V5 T" HEAT " A"menu heat"
 button V5 T" MOVE " A"menu move"
 button V5 " CTRL " A"menu control"
@@ -14,11 +19,6 @@ button V2 T"  PAUSE        " A"M25"
 ;
 button R51 C0 F0 V6 T"  RESUME  " A"M24"
 button V6 T"  ABORT         " A"M0 H1"
-;
-;image R3 C2 L"d3d.img"
-; Power Buttons 
-button R0 C2 T"OFF" A"M81"
-button R11 C2 T"ON" A"M80" 
 ;
 image R0 C33 L"nozzle.img"
 alter R10 C16 H2 N100 W20
@@ -36,7 +36,7 @@ image R0 C112 L"fan.img"
 alter R10 C98 H2 N300 W20
 text T"%"
 ;
-image R21 C0 L"hline.img"
+image R22 C0 L"hline.img"
 ;
 ;
 image R35 C0 L"hline.img"
