@@ -17,9 +17,9 @@ Piezo probe at the hotend.
 ![](images/EV2.png)
 
 WHY:
-Marlin 2.0 was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.0 was NOT smooth or reliable. 
+Marlin 2.0 was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.0 was NOT smooth or reliable. Even the developers say Marlin 2.0 is not ready for prime time. 
 
-Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work, EVER.    
+Why not Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work, EVER.
 
 So looking at the landscape, there really wasn't much to be lost but everything to be gained by running the Experiemntal port of LPC1768 RepRapFirmware. The RepRap.org forum discussion is here-
 
