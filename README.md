@@ -46,14 +46,22 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 2. Make the folder structrure ont he SD card to organize your configs. Luckily this is well documented here -
   https://duet3d.dozuki.com/Wiki/Firmware_Overview#Section_SD_card_structure
   
+  My folders listed above are pretty much the same. You can grab those if you wish. 
+  
 3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. 
 
-4. You will need to build your config files depending on your printer type- https://duet3d.dozuki.com/#Section_Firmware_configuration 
+4. You will need to build your config files depending on your printer type- 
+   https://duet3d.dozuki.com/#Section_Firmware_configuration 
 
 5. Use the online configurator - https://configurator.reprapfirmware.org/Start
-  Once you get through the config wizard, it will build you a package of 'sys' files to download. Dowload them and put them in the 'sys' folder on the SD card.  
-   Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
+   Once you get through the config wizard, it will build you a package of 'sys' files to download. 
+   Dowload them and put them in the 'sys' folder on the SD card.  
+   
+   Changes to the local configs don't get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits!  
+   
+What ended up working the best for me was to use the online configurator to generate new config files and selectivly copy the bits that I needed back into my working configs. It is a tedious, iterative process, but you LEARN much about the ways of RRF doing it this way. 
 
+Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
 --------------------------------------------------------
 This is the bit that took me the longest to figure by reading the docs. RTFM!  
 
@@ -67,16 +75,15 @@ M569 P2 S1  T1.9:1.0:0.65:0.65
 I had to work through endstops- I used to use all 6, but am now limited to 3. 
 My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180 until my OCD tendencies kicked in and I figured out how to change the direction.  
  
-My heatbed uses an MG18 thermistor- I could not figure out how to configure it. trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 
+My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 
  
-Changes to the local configs don't get written into the config.json, so if you try to use the configurator's option to import existing config, you will loose your edits!  
+5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo' I could not make sense of the options. 
 
-What ended up working for me was to use the online configurator to generate new config files and selectivly copy the bits that I needed back into my working configs. 
-
-5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo'
 What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode refernce for all options. 
-   M558 P8 I1 R0.4 H2 F400 T6000            
- My Z probe trigger value ended up being ~0.08mm. set it with G31 command. 
+
+M558 P8 I1 R0.4 H2 F400 T6000            
+
+My Z probe trigger value ended up being ~0.08mm. set it with G31 command. 
    G31 P500 X0 Y0 Z0.08 
 
 6. Put the card in the board and power up / reset. 
@@ -90,7 +97,13 @@ Motors- issue home commands, but be ready to trip the endstops to stop motion. D
 
 8. Here is the tedious part, you can not access the SD card by 'normal' methods- you HAVE to sneakernet it... any changes to the configs I would shut down, remove the card, put the card in an adapter on the PC then edit the configs. Reverse and repeat. If you have the networking enabled, then you can use the Duet Web Console to access the files to edit them. More on Networking below. 
 
+As you learn the ways of RRF, you can issue the configuration changes by GCode and retest. Once you have the bits worked out, take notes and then recopy them to your config.sys files. 
+
+I have not had any luck yet with saving via M500 to the config-overide.g. I am not sure waht/why, its on my to-do list. I think its solvable via RTFM.  
+
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. This is the ubiquitious RepRapDiscount Full Grapic LCD, 12864. 
+
+Even if yo uconfigure and power up the display, there will be nothing on it until you define some menu files in /menu folder. See 10 below. 
 
 For REARM, it reads just like Panacutt's info for RRD display (don't mind Roy's typo saying its for Vicki2) - scroll down to "RRD Full Graphic Smart Display"
 
@@ -106,7 +119,7 @@ You need to enable the LCD via M918 command. M918 P1 F1000000 in case M918 P1 F2
 
 https://duet3d.dozuki.com/Wiki/Duet_2_Maestro_12864_display_menu_system
 
-Greg3d's menus work. I need to tweak the lcd encoder values- my selections jump all over the place. 
+Greg3d's menus work. I needed to tweak the lcd encoder values- my selections jump all over the place. 
 
 The Simple_Menu folder contains menus from Greg3d on a twitter post: 
 https://www.dropbox.com/s/76tmbocb3omse8f/Duet%20Maestro%20Menu%20System.zip?dl=0 … (updated to work with the 2.02RC5 firmware)"
@@ -144,12 +157,16 @@ I had networking and LCD menus enabled, but I would get consistent netowrk timeo
 
 Octoprint -
 
-I was using Octoprint on a Raspberry Pi 3B as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got plenty of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet.   
+I was using Octoprint on a Raspberry Pi 3B as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. 
+
+I did change the ReArm board to be powered from external wall-wart transformer so that its always on. I dont like the idea of anther piece of hardware like that making things more complex, but for now, it works. 
 
 --------------------------------------------------------
 
-
 ESP8266 appears that it will work with Tx/RX pins on the RAMPS board in the conventional ESP3D way. This will provide a standard serial to WiFi bridge as a host to the printer just like Octprint and Pronterface. 
+
+Preliminary testing by Roy @ Panucatt has yielded that the new WiFi backpack works with the LPC port, RRD display and ReArm. I am waiting on the parts to test it out myself. 
+https://www.panucatt.com/ProductDetails.asp?ProductCode=WB8266
 
 E-Stop- I want estop function for the other endstops. My drivers cant do stall detection, considering this method. 
 https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
