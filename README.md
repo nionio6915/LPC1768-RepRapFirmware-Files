@@ -61,7 +61,8 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
    
 What ended up working the best for me was to use the online configurator to generate new config files and selectivly copy the bits that I needed back into my working configs. It is a tedious, iterative process, but you LEARN much about the ways of RRF doing it this way. 
 
-Pin naming https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
+Pin naming tips:  https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Section_Pin_names_for_Duet_2_Maestro
+
 --------------------------------------------------------
 This is the bit that took me the longest to figure by reading the docs. RTFM!  
 
