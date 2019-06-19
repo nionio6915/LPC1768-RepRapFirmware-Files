@@ -104,7 +104,7 @@ I have not had any luck yet with saving via M500 to the config-overide.g. I am n
 
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. This is the ubiquitious RepRapDiscount Full Grapic LCD, 12864. 
 
-Even if yo uconfigure and power up the display, there will be nothing on it until you define some menu files in /menu folder. See 10 below. 
+Even if you configure and power up the display, there will be nothing on it until you define some menu files in /menu folder. See 10 below. 
 
 For REARM, it reads just like Panacutt's info for RRD display (don't mind Roy's typo saying its for Vicki2) - scroll down to "RRD Full Graphic Smart Display"
 
@@ -155,6 +155,8 @@ https://os.mbed.com/users/hudakz/notebook/using-lan8720-modules-as-ethernet-inte
 Keep in mind that to get the DWC rolled into the reduced memory footprint of the LPC chip, its limited to 1 HTTP session and file tansfer throughput will be slow.
 
 I had networking and LCD menus enabled, but I would get consistent netowrk timeouts. As it turns out, the issue is not the networking module, but the LCD menus as they are consume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
+
+I have also gotten MUCH better results using the DWC version 1.22.5. After a brief page load, I no longer get random network timeouts. 
 
 Octoprint -
 
