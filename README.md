@@ -43,12 +43,19 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
   Then grab the closest config file for your board-
   https://github.com/sdavi/RepRapFirmware/tree/v2-dev-lpc/EdgeRelease/ExampleBoardConfig
   
-2. Make the folder structrure ont he SD card to organize your configs. Luckily this is well documented here -
+2. Make the folder structrure on the SD card to organize your configs. Luckily this is well documented here -
   https://duet3d.dozuki.com/Wiki/Firmware_Overview#Section_SD_card_structure
   
   My folders listed above are pretty much the same. You can grab those if you wish. 
   
-3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. 
+  You will want to be careful about how your format your SD card. For SD cards >4Gb, use a cluster size of 64K. It will help with DWC file transfers and make things snappier. 
+  
+3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. You will want to get a hold of the pin map for your board to verify the pins-
+
+ReArm: http://panucattdevices.freshdesk.com/helpdesk/attachments/1047536701
+Azteeg X5: https://bit.ly/2X3LV66
+SKR 1.3: https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3/blob/master/hardware/SKR-V1.3-PIN.pdf
+
 
 4. You will need to build your config files depending on your printer type- 
    https://duet3d.dozuki.com/#Section_Firmware_configuration 
@@ -74,13 +81,14 @@ As an example, here is Z motor using a DRV8825 motor.
 M569 P2 S1  T1.9:1.0:0.65:0.65 
 
 I had to work through endstops- I used to use all 6, but am now limited to 3. 
-My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180 until my OCD tendencies kicked in and I figured out how to change the direction.  
+
+My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180 until my OCD tendencies kicked in and I figured out how to change the direction and pu them back.  
  
 My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 
  
 5a. Piezo probe. The online configurator has options like 'modulated probe' and 'SmartEffector-Piezo' I could not make sense of the options. 
 
-What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode refernce for all options. 
+What ended up working the best is what Idris at Precision Piezo suggested , change P5 to P8 to more senstive setting, reduce travel and speed. See the GCode reference for all options. 
 
 M558 P8 I1 R0.4 H2 F400 T6000            
 
@@ -96,11 +104,11 @@ Using something like Octoprint or Pronterface look at the terminal output. It sh
 
 Motors- issue home commands, but be ready to trip the endstops to stop motion. Do them one at a time. Use M114 & M119 to determine position and endstop status. 
 
-8. Here is the tedious part, you can not access the SD card by 'normal' methods- you HAVE to sneakernet it... any changes to the configs I would shut down, remove the card, put the card in an adapter on the PC then edit the configs. Reverse and repeat. If you have the networking enabled, then you can use the Duet Web Console to access the files to edit them. More on Networking below. 
+8. Here is the tedious part, you can not access the SD card by 'normal' methods- you HAVE to sneakernet it... any changes to the configs you can do with gcodes from the terminal. Keep GOOD notes then update your config.g files. I would shut down, remove the card, put the card in an adapter on the PC then edit the configs. Reverse and repeat. If you have the networking enabled, then you can use the Duet Web Console to access the files to edit them. More on Networking below. 
 
-As you learn the ways of RRF, you can issue the configuration changes by GCode and retest. Once you have the bits worked out, take notes and then recopy them to your config.sys files. 
+As you learn the ways of RRF, you can issue the configuration changes by GCode and retest. Once you have the bits worked out, take notes and then recopy them to your config.g files. 
 
-I have not had any luck yet with saving via M500 to the config-overide.g. I am not sure waht/why, its on my to-do list. I think its solvable via RTFM.  
+I have not had any luck yet with saving via M500 to the config-overide.g. ~I am not sure what/why, its on my to-do list. I think~ its solvable via RTFM.  You need to add M501 to the end of your config.g file to enable the eeprom action. 
 
 9. LCD- documentation and example board file rerefence LCD's - only ST9720 SPI currently supported. This is the ubiquitious RepRapDiscount Full Grapic LCD, 12864. 
 
