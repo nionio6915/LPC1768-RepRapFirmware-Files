@@ -5,7 +5,7 @@ This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based 
 These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR, maybe some others.   
 ...
 
-Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS be required in order to revert back or update." More on that later. 
+Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS required in order to revert back or update. More on that later. 
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
 Eustathios Version 2. Cartesian gantry printer. 
@@ -48,7 +48,8 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
   
   My folders listed above are pretty much the same. You can grab those if you wish. 
   
-  You will want to be careful about how your format your SD card. For SD cards >4Gb, use a cluster size of 64K. It will help with DWC file transfers and make things snappier. 
+  You will want to be careful about how your format your SD card. For SD cards >4Gb, use a cluster size of 64K. It will help with DWC file transfers and make things snappier. If you can use a smaller capacity card, <4Gb, you can use FAT16. 
+https://reprap.org/forum/read.php?340,557845
   
 3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. You will want to get a hold of the pin map for your board to verify the pins-
 
@@ -82,7 +83,7 @@ M569 P2 S1  T1.9:1.0:0.65:0.65
 
 I had to work through endstops- I used to use all 6, but am now limited to 3. 
 
-My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180 until my OCD tendencies kicked in and I figured out how to change the direction and pu them back.  
+My entire motion system was inverted - I could not figure out how to get them flipped in the config file so I flipped all my cables around 180 until my OCD tendencies kicked in and I figured out how to change the direction and put them back.  
  
 My heatbed uses an MG18 thermistor- I could not figure out how to configure it. Trying to use the configurator calculator would result in a negative value. Looking at Marlin thermistor75 tables, the beta was in there, and I used B4100 in my config, all seems to be good. 
  
@@ -148,7 +149,7 @@ Under the control menu is a 'Bed Leveling' option. (There is also a BL Touch fil
 
 Datasheet - https://www.st.com/resource/en/datasheet/stp55nf06l.pdf 
 
-Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn on the fan and PSU accordingly. Follow the Duet hardware scheamtic and you will be good. My previous pic had all the pins and GSD jumbled. Hopefully this is consistent now.
+Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn on the fan and PSU accordingly. Follow the Duet hardware scheamtic and you will be good. My previous pic had all the pins and GSD jumbled. Hopefully this is consistent now. The resistors are under the PCB. I still need to add a flyback diode. 
 
 ![](images/mosfet.png)
 
@@ -164,13 +165,17 @@ Keep in mind that to get the DWC rolled into the reduced memory footprint of the
 
 I had networking and LCD menus enabled, but I would get consistent netowrk timeouts. As it turns out, the issue is not the networking module, but the LCD menus as they are consume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
 
-I have also gotten MUCH better results using the DWC version 1.22.5. After a brief page load, I no longer get random network timeouts. 
+I have also gotten MUCH better results using the DWC version ~1.22.5~. 1.22.6. The DWC git page does not list the 1.22.6 version, but its on Duets repository. https://github.com/dc42/RepRapFirmware/releases
+
+After a brief page load, I no longer get random network timeouts. I have noticed some random mentions by folks how they liked the 1.22.x version better. 
+
+Other thing I did in DWC- On startup, the ATX power supply control would appear bu then disappear when the system connected. I finally figured out that you can enable the ATX poer supply control by going into the Settings -> Usr Interface -> General group.
 
 Octoprint -
 
-I was using Octoprint on a Raspberry Pi 3B as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. 
+I was using Octoprint on a Raspberry Pi 3B as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. Octoprint also sends a checksum for EVEREY freaking line of gcode it sends. Its ridiculous. It would be so much more efficient to do it for every say 100 lines or even 25 lines instead of every single one. 
 
-I did change the ReArm board to be powered from external wall-wart transformer so that its always on. I dont like the idea of anther piece of hardware like that making things more complex, but for now, it works. 
+I did change the ReArm board to be powered from external wall-wart transformer so that its always on. I dont like the idea of another piece of hardware like that making things more complex, but for now, it works. 
 
 --------------------------------------------------------
 
