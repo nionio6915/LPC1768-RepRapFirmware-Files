@@ -7,8 +7,8 @@ These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR, maybe some others.
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS required in order to revert back or update. More on that later. 
 
-My printer- https://github.com/eclsnowman/Eustathios-Spider-V2
-Eustathios Version 2. Cartesian gantry printer. 
+My printer- https://github.com/eclsnowman/Eustathios-Spider-V2  
+Eustathios Version 2. Cartesian gantry printer.   
 Discussion moved from G+ (RIP) to https://forum.makerforums.info/c/herculien
 
 ReArm with Ramps 1.4, SD2224 for X & Y, and DVR8825 for Z & Extruder
@@ -35,6 +35,9 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
   Pay attention to the bits at the end " Firmware differences from Marlin, Repetier etc" and "Known firmware issues and limitations"
   
   The quick start guide has lots of helpful info too- https://duet3d.dozuki.com/#Section_Quick_Links
+  
+  Here is a a machine comissioning guide that I found helpful, even though I found it after I needed it. 
+  https://docs.google.com/document/d/1k_3IYuRaRNjBqNOff-AcdCPjyf0nLv5rsSWXWlQVxSw/pub
 
 1. Get the port. 
   Installing the port is just like loading up Marlin 2.0 or Smoothie. Copy the bin file to the SD card. 
@@ -53,9 +56,9 @@ https://reprap.org/forum/read.php?340,557845
   
 3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. You will want to get a hold of the pin map for your board to verify the pins-
 
-ReArm: http://panucattdevices.freshdesk.com/helpdesk/attachments/1047536701
-Azteeg X5: https://bit.ly/2X3LV66
-SKR 1.3: https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3/blob/master/hardware/SKR-V1.3-PIN.pdf
+ReArm: http://panucattdevices.freshdesk.com/helpdesk/attachments/1047536701  
+Azteeg X5: https://bit.ly/2X3LV66  
+SKR 1.3: https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3/blob/master/hardware/SKR-V1.3-PIN.pdf  
 
 
 4. You will need to build your config files depending on your printer type- 
