@@ -49,10 +49,12 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 2. Make the folder structrure on the SD card to organize your configs. Luckily this is well documented here -
   https://duet3d.dozuki.com/Wiki/Firmware_Overview#Section_SD_card_structure
   
-  My folders listed above are pretty much the same. You can grab those if you wish. 
-  
+  My folders listed above are pretty much the same. You can grab those if you wish. See below for a snip of the folder structure of my SD card backup on the PC.
+    
   You will want to be careful about how your format your SD card. For SD cards >4Gb, use a cluster size of 64K. It will help with DWC file transfers and make things snappier. If you can use a smaller capacity card, <4Gb, you can use FAT16. 
 https://reprap.org/forum/read.php?340,557845
+  
+![](images/card-contents.png)  
   
 3. Edit the example board file and save it to sys/board.txt. I have included mine for REARM here on git for context. You will want to get a hold of the pin map for your board to verify the pins-
 
