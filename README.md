@@ -79,12 +79,13 @@ Pin naming tips:  https://duet3d.dozuki.com/Wiki/RepRapFirmware_3_overview#Secti
 --------------------------------------------------------
 This is the bit that took me the longest to figure by reading the docs. RTFM!  
 
-Stepper Drivers: Unlike Marlin, you should/need to add Stepper Driver Timings to your config.
+Stepper Drivers: Unlike Marlin, you should/need to add Stepper Driver Timings to your config. I got MUCH better prints using the timings from the datasheet. There is a dicsussion on the reprap thread.  
+
 ![](images/Timings.png)
 
 As an example, here is Z motor using a DRV8825 motor. 
 
-M569 P2 S1  T1.9:1.0:0.65:0.65 
+M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
 
 I had to work through endstops- I used to use all 6, but am now limited to 3. 
 
@@ -126,7 +127,7 @@ http://panucattdevices.freshdesk.com/support/solutions/articles/1000243195-lcd-d
 
 You will have to mod your RRD cables as shown. Its pretty simple to cut the first wire and solder on an extension with a Dupont connector to connect to the board. I suggesting soldering a heavier wire leader being easier than trying to crimp the whisps of ribbon cable. 
 
-10 LCD and Menu files - Here are the links I followed. Currently, the LCD menus as they are comsume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
+10. LCD and Menu files - Here are the links I followed. Currently, the LCD menus as they are comsume a LOT of the available system memory. It is not recommended to try and run networking AND these LCD menus at the same time. Any attempt to connect to the DWC server will result in the board resetting itself. Consider youself warned.  
 
 https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
@@ -158,7 +159,7 @@ Here is the protoype board wired up- the MOSFETS convert the pin trigger to turn
 
 ![](images/mosfet.png)
 
-Network Interface. 
+12. Network Interface. 
 
 The LPC1768/69 chips use a physical layer transiever. Ethernet module from Panacutt seems to be the best and easiest way. 
 http://www.panucatt.com/ProductDetails.asp?ProductCode=LAN8720
@@ -176,13 +177,15 @@ After a brief page load, I no longer get random network timeouts. I have noticed
 
 Other thing I did in DWC- On startup, the ATX power supply control would appear bu then disappear when the system connected. I finally figured out that you can enable the ATX poer supply control by going into the Settings -> Usr Interface -> General group.
 
-Octoprint -
+13. Octoprint -
 
-I was using Octoprint on a Raspberry Pi 3B as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. Octoprint also sends a checksum for EVEREY freaking line of gcode it sends. Its ridiculous. It would be so much more efficient to do it for every say 100 lines or even 25 lines instead of every single one. 
+I was using Octoprint on a Raspberry Pi 3B+ as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. Octoprint also sends a checksum for EVEREY freaking line of gcode it sends. Its ridiculous. It would be so much more efficient to do it for every say 100 lines or even 25 lines instead of every single one. 
 
-I did change the ReArm board to be powered from external wall-wart transformer so that its always on. I dont like the idea of another piece of hardware like that making things more complex, but for now, it works. 
+I did change the ReArm board to be powered from external wall-wart transformer so that its always on. I don't like the idea of another piece of hardware like that making things more complex, but for now, it works. 
 
 --------------------------------------------------------
+
+14. EPS3D as host
 
 ESP8266 appears that it will work with Tx/RX pins on the RAMPS board in the conventional ESP3D way. This will provide a standard serial to WiFi bridge as a host to the printer just like Octprint and Pronterface. 
 
@@ -195,3 +198,11 @@ https://duet3d.dozuki.com/Wiki/Connecting_an_Emergency_Stop
 Driver Timings: With the DRV8825's, I got MUCH better prints using the timings from the datasheet. There is a dicsussion on the reprap thread.  
 M569 P0 S1  T1.9:1.0:0.65:0.65           ; Drive 0 goes forwards
 
+15. Panel Due
+
+I got my hands on a used Panel Due. It communicates via the TX/RX just like the Wifi Backpack. Permilnary testng is promising. 
+the following needs to be added to the baord.txt file to enable PanelDue support-
+"lpc.uartPanelDueMode = true; //Enable PanelDue Support"
+
+16. Software SPI
+I have not yet tried it yet, but sdavi has incorporated software SPI support into the 2.04RC1 (2019-07-14b1) binary. People have reported that LCD's with software SPI based boards now function with 12864 LCD's. You still have to work out the whole EXP1/EXP2 connector justification but it appears to be working. 
