@@ -8,6 +8,9 @@
 G90                                      ; Send absolute coordinates...
 M83                                      ; ...but relative extruder moves
 
+; M575 P0 B56700 S0                       ; Board Serial Port
+M575 P1 B57600 S1                       ; Enable PanelDue
+
 ; Network
 M552 S0                                  ; Disable network
 
@@ -16,7 +19,7 @@ M550 P"EV2-RRF"                          ; Set machine name
 M552 P192.168.0.25 S1                    ; Enable network and set IP address
 M553 P255.255.255.0                      ; Set netmask
 M554 P192.168.0.1                        ; Set gateway
-M586 P0 S1                               ; Enable HTTP
+M586 P0 S1 T0                              ; Enable HTTP
 ; M586 P1 S0                             ; Disable FTP
 ; M586 P2 S0                             ; Disable Telnet
 
@@ -47,14 +50,14 @@ M92 X160.00 Y160.00 Z1600.00 E476.5      ; Set steps per mm E476.5 FOR QR, 16ux
 ; SPEEDS
 ; M566 Xn Yn Zn En Pn where Pn is the jerk policy, currently not set in config, consider using
 ; M566 X600.00 Y600.00 Z12.00 E240.00    ; Set maximum instantaneous speed changes (mm/min) OLD not so good
-M566 X400.00 Y400.00 Z60.00 E50          ; Set maximum instantaneous speed changes (mm/min) jerk kinda high
+M566 X400.00 Y400.00 Z180.00 E360.00          ; Set maximum instantaneous speed changes (mm/min) jerk kinda high
 
 ; M203 X15000 Y15000 Z1500 E1500         ; Set maximum speeds (mm/min)
 M203 X9000.00 Y9000.00 Z1200.00 E6000    ; Set maximum speeds (mm/min) 
 
 ;ACCELERATIONS
 ; M201 X1100 Y1100 Z180 E480             ; Set accelerations (mm/s^2)
-M201 X1500.00 Y1500.00 Z100.00 E2400     ; Set accelerations (mm/s^2)
+M201 X1500.00 Y1500.00 Z180.00 E2400     ; Set accelerations (mm/s^2)
 ; differnce between M204 and M201 is 
 ; the M204 is the resultant  of the 2 components
 ; M204 is absolute combination 
@@ -72,22 +75,22 @@ M574 X2 Y2 S0                            ; Set active low Endstops
 
 ; Z-Probe
 M574 Z1 S2                               ; Set endstops controlled by probe
-M558 P8 I1 R0.4 H2 F600 T6000            
+M558 P8 I1 R0.4 H5 F600 T6600            
 ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed from 
 ; set Z probe to digital, 2mm dive height, 0.4 sec probe recovery time 
-; Z speed 100 mm/min 100mm/min probe travel speed and set as Z endstop
+; Z speed 8 mm/sec XY travel 100mm/min probe travel speed and set as Z endstop
 ; was 
 ; M558 P5 I1 R0.4 H5 F600 T6000          
 ; Set Z probe type to effector and the dive height + speeds
 ;
-G31 P500 X0 Y0 Z-0.018                    ; Set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y0 Z-0.02                  ; Set Z probe trigger value, offset and trigger height
 ; G31 Pnnn Xnnn Ynnn Znnn Cnnn Snnn
 ; Pnnn Trigger value
 ; Xnnn Probe X offset1
 ; Ynnn Probe Y offset1
 ; Znnn Trigger Z height
-; Cnnn Temperature coefficient2
-; Snnn Calibration temperature2
+; Cnnn Temperature coefficient
+; Snnn Calibration temperature 2
 ; Tnnn Z probe type to which these parameters apply, defaults to the current
 ; Z probe type as defined by M558 P parameter
 M557 X5:285 Y5:285 S70                   ; Define mesh grid
@@ -128,7 +131,7 @@ G10 P0 R0 S0                             ; Set initial tool 0 active and standby
 ; M918 P1 E4 F1000000                      ; enable the LCD 
 ; https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
-; set input-output to Marlin for compatibilty
+; set input-output to Marlin for compatibility
 ; M555 P2
 
 T0
