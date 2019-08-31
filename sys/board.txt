@@ -129,4 +129,5 @@ lcd.panelButtonPin = 1.22; //Extra button on Viki and RRD Panels
 //EXPERIMENTAL
 ; lpc.internalSDCard.spiFrequencyHz    = 10000000;
 ; lpc.externalSDCard.spiFrequencyHz  =  4000000;
-lpc.uartPanelDueMode = true; //Enable PanelDue Support 
+; needs to go at top
+; lpc.uartPanelDueMode = true; //Enable PanelDue Support 
