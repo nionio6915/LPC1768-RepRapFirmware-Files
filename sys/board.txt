@@ -9,6 +9,9 @@
 
 //    : ReArm configured for Bed, Extruder and Cooling Fan
 
+lpc.uartPanelDueMode = true; 
+//Enable PanelDue Support
+
 // ReArm Leds:
 // Play - 4.28;
 
