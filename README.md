@@ -177,6 +177,8 @@ After a brief page load, I no longer get random network timeouts. I have noticed
 
 Other thing I did in DWC- On startup, the ATX power supply control would appear bu then disappear when the system connected. I finally figured out that you can enable the ATX poer supply control by going into the Settings -> Usr Interface -> General group.
 
+![](images/KPpREmiW15.gif)
+
 13. Octoprint -
 
 I was using Octoprint on a Raspberry Pi 3B+ as a host. I get intermittent, unexplained connection timeouts. Not sure if its because Octoprint is so chatty and impatient on its retries to the controller. There are times I think that the printer is waiting on instructions from Octoprint by its behavior. I had this issue under Marlin too. The raspi is powered off of the +5VFSB of the PSU, its got 3A of juice supplying it. I suspect it might be the USB ports limiting the power out. I have not tried a powered hub yet. Octoprint also sends a checksum for EVEREY freaking line of gcode it sends. Its ridiculous. It would be so much more efficient to do it for every say 100 lines or even 25 lines instead of every single one. 
