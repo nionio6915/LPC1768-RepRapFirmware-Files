@@ -1,5 +1,7 @@
 # LPC1768-RepRapFirmware-Files
-ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
+These are my ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
+
+The binary releases of the firmware are here: https://github.com/dc42/RepRapFirmware/releases
 
 This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards.
 These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR, maybe some others.   
@@ -41,7 +43,8 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
 
 1. Get the port. 
   Installing the port is just like loading up Marlin 2.0 or Smoothie. Copy the bin file to the SD card. 
-  https://github.com/sdavi/RepRapFirmware/tree/v2-dev-lpc/EdgeRelease
+
+  The binary releases of the firmware are here: https://github.com/dc42/RepRapFirmware/releases 
   
   Then grab the closest config file for your board-
   https://github.com/sdavi/RepRapFirmware/tree/v2-dev-lpc/EdgeRelease/ExampleBoardConfig
