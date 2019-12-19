@@ -53,13 +53,11 @@ If you can live with a simple Full Graphic LCD screen, then this might be for yo
 
 If you want native networking to control your printer, this might be for you, and is hardware dependant. 
 
-**If you are looking for an 'easier' solution to setting up SPI/UART control of your stepper drivers, this is not for you, yet. 
-If you want to use SPI/UART to control your drivers, this is not for you, yet. 
-If you must have a TFT touchscreen, this is not for you, yet. **
+**If you are looking for an 'easier' solution to setting up SPI/UART control of your stepper drivers, this is not for you, yet. If you want to use SPI/UART to control your drivers, this is not for you, yet. If you must have a TFT touchscreen, this is not for you, yet.**
 
 If you are tinkerer and tweaker, are able to read documentation and want to REALLY setup, configure and optimize your printer and its firmware, then this is without a doubt for you. 
 
-
+DRIVERS ARE CONFIGURED IN SANDALONE MODE. YOU MAY NEED TO SOLDER/DESOLDER JUMPER PADS ON YOUR STEPPER DRIVER BOARDS. REFER TO YOUR PARTS DATASHEET!
 
 ## READ THIS BEFORE YOU BEGIN! 
   https://duet3d.dozuki.com/Wiki/Firmware_Overview
