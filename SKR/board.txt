@@ -1,0 +1,113 @@
+//      Config file to define Hardware Pins SKR 1.3 Board 6-30-2019
+//      Note: Each line should be less than 120 characters.
+//    : Unwanted options can be commented out or set to NoPin. Lines commented out will get default values
+//    : for pins the default is NoPin.
+//    : Values for Arrays need to be contained within { and }
+//    : Comments can be defined with // or # (comments are not supported inside arrays)
+//    : Each config entry must be all on a single line.
+
+//LED blinks to indicate Platform is spinning or other diagnostic 
+//Comment out or set to NoPin if not wanted.
+leds.diagnostic = NoPin
+
+//                      Drive       0     1     2     3      4 
+//                    Typically     X     Y     Z     E0     E1
+// reordered lines to match Marlin pins.h file
+stepper.stepPins =               { 2.2,  0.19, 0.22,  2.13, 0.1}; 
+stepper.directionPins =          { 2.6,  0.20, 2.11,  0.11, 0.00};  
+stepper.enablePins =             { 2.1,  2.8,  0.21,  2.12, 0.10}; 
+stepper.hasDriverCurrentControl = false;
+stepper.digipotFactor = 113.33; //factor for converting 
+	
+//RRF equiv     X     Y     Z     E0    E1    E2
+//RRF C Index   0     1     2     3     4     5
+//              Xmin  Ymin  Zmin  Xmax  Ymax  Zmax
+endstop.pins = {1.29, 1.27} // 1.25, 1.28, 1.26, 1.24}; 
+// first 2 pins are Xmin & Ymin, rest default to NoPin
+
+zProbe.pin = 1.25;
+// define ZProbe pin 
+zProbe.modulationPin = 2.0; // this is the servo pin
+    
+//                    Bed   E0    E1
+// heat.tempSensePins = {67, 68, 69};
+heat.tempSensePins = {0.23, 0.24, 0.25};
+heat.heatOnPins =    {2.5, 2.7};
+heat.spiTempSensorCSPins = { }; 
+        
+fan.pins = {2.3, 2.4};  
+
+fan.tachoPins = { NoPin };
+ 
+atxPowerPin = NoPin;
+        
+        
+// **PWM on LPC**.    NO IDEA ON THIS STUFF???
+// There are a number of HW PWM pins on the LPC, however, they all share the same frequency.
+// RRF makes use of different frequencies so to support that, 3 HW Timers are also configured to perform
+// PWM. This also allows the use of any GPIO pin to support PWM. To use the Timers, add the pins
+// to the slowPWM, fastPWM and servoPins arrays below.  Each timer can support up to 3 Pins and 
+// they all also share the same frequency.
+// servoPins run at 50Hz. Fast/Slow PWM Frequency can be changed below.
+                
+lpc.slowPWM.pins = {2.5};
+lpc.slowPWM.frequencyHz = 10; //10Hz (for Bed PWM)
+
+
+lpc.fastPWM.pins = {2.7, 2.4};  // took 2.06 out
+lpc.fastPWM.frequencyHz = 250; //250Hz (for Hotend/Fan PWM)
+
+// Note: Also add servo Pins to the SpecialPinMap Below so they get assigned a logical pin number
+lpc.servoPins = {2.0}; 
+
+lpc.externalInterruptPins = { }; // was 0.26 Max of 3 pins for Ext Interrupts. Must be on Port 0 or Port 2.
+
+//Pins in the specialPinMap will have "logical pin numbers" 60-69 in RRF (max 10 special pins)
+//Array of any Servo/Extra/spare pins that can be controlled by M42 and M280
+// specialPinMap = {67, 68, 69};  
+specialPinMap = {2.0};
+// NOT SURE WHAT OTHERS SHOULD BE HERE. I DID THIS FOR HEAT.TEMPSENSEPINS
+// those are the right assignments for those pins
+// the others i think are 37, 31, 33, 49, 16, 58
+// 58 is open drain
+// 49 is NOT 5V tolerant
+// but do you USE them? 
+
+//**SPI Devices**.   MINE ARE MOSI 0.18, MISO 0.17, SCLK 0.15 BUT NO IDEA HOW TO DEFINE THEM??
+// these are defined for the EXP1 and EXP2 pin headers right now. 
+// look at the BLUE highlights on the pic i uploaded 
+    
+// SPI devices should be connected to using SSP0:
+//    MOSI, MISO, SCLK
+//    0.18  0.17  0.15
+
+//Only supports 1 External SDCard.   
+// SKR 1.3 has inverted pin mappings from normal RRD hookup
+externalSDCard.csPin         = 0.16;  
+externalSDCard.cardDetectPin = 1.31;  
+lpc.externalSDCard.spiFrequencyHz  = 4000000;
+
+//LCD Pins (only ST9720 SPI currently supported). I HAVE L12864 SO NOT SUPPORTED??
+// is it connected via the EXP1 and EXP2 pins or 5 wire TFT pins? 
+// i thought you said your tft was connected via serial uart?
+// i would comment these out for now or make them nopin
+lcd.lcdCSPin =       0.16; // LCD Chip Select verified on Marlin pins
+lcd.lcdBeepPin =     1.30; // verified on Marlin pins but not sure if supported on LPC
+lcd.encoderPinA =    3.25; // verified on Marlin pins switch for opposite action
+lcd.encoderPinB =    3.26; // verified on Marlin pins
+lcd.encoderPinSw =   0.28; // was 1.30 could be 2.11 ?
+// encoder click verified on Marlin pins 
+lcd.lcdDCPin =       NoPin;  // DataControl Pin (A0) if none used set to NoPin
+lcd.panelButtonPin = NoPin;  // 2.11; //Extra button on Viki and RRD Panels (reset/back etc configurable)
+
+// this is the internal SD card
+//EXPERIMENTAL
+lpc.internalSDCard.spiFrequencyHz  = 10000000;
+	
+
+	
+
+	
+
+
+

@@ -49,7 +49,9 @@ M574 X1 Y1  S1                            ; X & Y endstops are at the min travel
 
 ; Z-Probe
 M574 Z1 S2 C2                             ; Set endstops controlled by probe
-M558 R0.1 P9 H10 F240 T6000 C2                 ; reduce travel and speed
+; M558 R0.1 P9 H10 F240 T6000 C2                 ; reduce travel and speed OLD not verified
+; M558 R0.1 P4 H10 F240 T6000 C2                 ; reduce travel and speed OLD not verified
+
 
 G31 P25 X46 Y0 Z1.6                       ; Set Z probe trigger value, offset and trigger height
 M557 X15:200 Y15:200 S30                  ; Define mesh grid
