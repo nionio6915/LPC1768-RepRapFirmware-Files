@@ -137,6 +137,8 @@ M558 P8 I1 R0.4 H2 F400 T6000
 My Z probe trigger value ended up being ~0.08mm. set it with G31 command. 
    G31 P500 X0 Y0 Z0.08 
 
+I changed to the Smart IR probe after a while. The current config reflects this. The Piezo configs are commented out. 
+
 6. Put the card in the board and power up / reset. 
 Using something like Octoprint or Pronterface look at the terminal output. It should show you that it booted and processed the config files. 
 
