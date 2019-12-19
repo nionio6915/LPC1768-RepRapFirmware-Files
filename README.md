@@ -1,10 +1,14 @@
 # LPC1768-RepRapFirmware-Files
-These are my ReARM config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
+These are my config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
 
 The binary releases of the firmware are here: https://github.com/dc42/RepRapFirmware/releases
 
 This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards.
-These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR, maybe some others.   
+These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR 1.1, SKR 1.3, maybe some others.   
+
+My primary board is a Panucatt ReARM. I have also set this up on a SKR with BLTouch. I no longer have the Ender with the BLTouch.
+
+As with all things on the Internets, Your Mileage May Vary.  
 ...
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS required in order to revert back or update. More on that later. 
@@ -19,13 +23,37 @@ Piezo probe at the hotend.
 ![](images/EV2.png)
 
 WHY:
-Marlin 2.0 was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.0 was NOT smooth or reliable. Even the developers say Marlin 2.0 is not ready for prime time. 
+Marlin 2.x was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.x was NOT smooth or reliable. Even the developers said Marlin 2.0 is not ready for prime time. 
 
 Why not Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work, EVER.
 
 So looking at the landscape, there really wasn't much to be lost but everything to be gained by running the Experiemntal port of LPC1768 RepRapFirmware. The RepRap.org forum discussion is here-
 
 https://reprap.org/forum/read.php?147,810214
+
+--------------------------------------------------------
+
+What the LPC port of RRF is and is not: 
+
+If you are a looking for a stable, mature, well documented real time O/S firmware, then keep reading.  
+
+If you are running an 8bit Arduino with RAMPS 1.4 or better and want to make a jump to 32bit, then this is a natural upgrade. No recabling, no reterminating connectors. Replace the Arduino with ReARM and go. 
+
+If you have an SKR and want something more robust than Marlin or Smoothie, then this might be an option for you.  
+
+If you have the expectation for a 100% Duet equivalent for $20-$30, this it not for you. It's like 80% functionality of a Duet board. 
+
+If you want a truely open source, non-kludged version of reprap firmware, this might be for you.  
+
+If you can live with a simple Full Graphic LCD screen, then this might be for you. 
+
+If you want native networking to control your printer, this might be for you, and is hardware dependant. 
+
+**If you are looking for an 'easier' solution to setting up SPI/UART control of your stepper drivers, this is not for you, yet. 
+If you want to use SPI/UART to control your drivers, this is not for you, yet. 
+If you must have a TFT touchscreen, this is not for you, yet. **
+
+If you are tinkerer and tweaker, are able to read documentation and want to REALLY setup, configure and optimize your printer and its firmware, then this is without a doubt for you. 
 
 --------------------------------------------------------
 
