@@ -1,17 +1,22 @@
 # LPC1768-RepRapFirmware-Files
+
+This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards. These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR 1.1, SKR 1.3, maybe some others.   
+
+My primary board is a Panucatt ReARM. I have also set this up on a SKR with BLTouch. I no longer have the Ender with the BLTouch.
+
+I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
+
+As with all things on the Internets, Your Mileage May Vary. 
+
 These are my config files for using sdavi's port of RepRapFirmware: https://github.com/sdavi/RepRapFirmware
 
 The binary releases of the firmware are here: https://github.com/dc42/RepRapFirmware/releases
 
-This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards.
-These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR 1.1, SKR 1.3, maybe some others.   
-
-My primary board is a Panucatt ReARM. I have also set this up on a SKR with BLTouch. I no longer have the Ender with the BLTouch.
-
-As with all things on the Internets, Your Mileage May Vary.  
 ...
 
 Note: This firmware does not show up as a mass storage device when connected to a computer. Physical access to the internal sdcard IS required in order to revert back or update. More on that later. 
+
+## My Printer / Setup
 
 My printer- https://github.com/eclsnowman/Eustathios-Spider-V2  
 Eustathios Version 2. Cartesian gantry printer.   
@@ -22,7 +27,7 @@ Piezo probe at the hotend.
 
 ![](images/EV2.png)
 
-WHY:
+## WHY:
 Marlin 2.x was not consistently stable for me. Even though I was using 1.1.x for over a year, the move to 2.x was NOT smooth or reliable. Even the developers said Marlin 2.0 is not ready for prime time. 
 
 Why not Smoothieware: lets just say my first and only visit to the #smoothieware irc channel, where I asked for clarification of their docs, was so offensive, that I could not see my way to supporting their work, EVER.
@@ -31,9 +36,8 @@ So looking at the landscape, there really wasn't much to be lost but everything 
 
 https://reprap.org/forum/read.php?147,810214
 
---------------------------------------------------------
 
-What the LPC port of RRF is and is not: 
+## What the LPC port of RRF is and is not: 
 
 If you are a looking for a stable, mature, well documented real time O/S firmware, then keep reading.  
 
@@ -55,11 +59,9 @@ If you must have a TFT touchscreen, this is not for you, yet. **
 
 If you are tinkerer and tweaker, are able to read documentation and want to REALLY setup, configure and optimize your printer and its firmware, then this is without a doubt for you. 
 
---------------------------------------------------------
 
-I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
 
-0. READ THIS BEFORE YOU BEGIN! 
+## READ THIS BEFORE YOU BEGIN! 
   https://duet3d.dozuki.com/Wiki/Firmware_Overview
   
   Pay attention to the bits at the end " Firmware differences from Marlin, Repetier etc" and "Known firmware issues and limitations"
@@ -68,6 +70,8 @@ I am putting my notes here as I go, hopefully to aid someone else and maybe use 
   
   Here is a a machine comissioning guide that I found helpful, even though I found it after I needed it. 
   https://docs.google.com/document/d/1k_3IYuRaRNjBqNOff-AcdCPjyf0nLv5rsSWXWlQVxSw/pub
+
+## Lets get to it-
 
 1. Get the port. 
   Installing the port is just like loading up Marlin 2.0 or Smoothie. Copy the bin file to the SD card. 
