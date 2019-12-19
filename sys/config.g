@@ -8,8 +8,8 @@
 G90                                      ; Send absolute coordinates...
 M83                                      ; ...but relative extruder moves
 
-; M575 P0 B56700 S0                       ; Board Serial Port
-M575 P1 B57600 S1                       ; Enable PanelDue
+  ; M575 P0 B56700 S0                      ; Board Serial Port
+M575 P1 B57600 S1                        ; Enable PanelDue
 
 ; Network
 M552 S0                                  ; Disable network
@@ -18,72 +18,101 @@ M552 S0                                  ; Disable network
 M550 P"EV2-RRF"                          ; Set machine name
 M552 P192.168.0.25 S1                    ; Enable network and set IP address
 M553 P255.255.255.0                      ; Set netmask
-M554 P192.168.0.1                        ; Set gateway
+M554 P192.168.0.254                        ; Set gateway
 M586 P0 S1 T0                              ; Enable HTTP
-; M586 P1 S0                             ; Disable FTP
-; M586 P2 S0                             ; Disable Telnet
-
-; M540 P00:1F:11:02:04:20                ; default bogus MAC Address
+ ; M586 P1 S0                             ; Disable FTP
+ ; M586 P2 S0                             ; Disable Telnet
+ ; M540 P00:1F:11:02:04:20                ; default bogus MAC Address
 
 M552 S1                                  ; Enable network DHCP
 
 ; DRIVES
-; M569 P(driver number) S(direction 0|1) T(pulse width a:b:c:d) D F C B H 
-; M569 P0 S0  T0.1:0.1:0.02:0.02         ; SD2224 Driver X Drive 0 goes reverese
-; consider using D(0|1|2|3) for stealth chop mode
-M569 P0 S1 T1.9:1.0:0.65:0.65            ; DRV8825 Driver X Drive 1 goes forwards
+ ; M569 P(driver number) S(direction 0|1) T(pulse width a:b:c:d) D F C B H 
+M569 P0 S0  T0.1:0.1:0.02:0.02           ; SD2224 Driver X Drive 0 goes reverese
 
-; M569 P1 S0  T0.1:0.1:0.02:0.02         ; SD2224 Driver Y Drive 0 goes reverse 
-M569 P1 S0 T1.9:1.0:0.65:0.65            ; DRV8825 Driver Y Drive 1 goes BACKWARDS
+ ; consider using D(0|1|2|3) for stealth chop mode
+ ; M569 P0 S1 T1.9:1.0:0.65:0.65          ; DRV8825 Driver X Drive 1 goes forwards
+
+M569 P1 S1  T0.1:0.1:0.02:0.02           ; SD2224 Driver Y Drive 0 goes forwards
+ ; M569 P1 S0 T1.9:1.0:0.65:0.65          ; DRV8825 Driver Y Drive 1 goes BACKWARDS
 
 M569 P2 S1  T1.9:1.0:0.65:0.65           ; DRV8825 Drive Z goes forwards
 
-M569 P3 S0  T1.9:1.0:0.65:0.65           ; DRV8825 Drive 3 goes forwards
+M569 P3 S1  T1.9:1.0:0.65:0.65         ; DRV8825 Drive 3 goes forwards
+ ; M569 P3 S1  T1.9:1.0:0.65:0.65           ; DRV8825 Drive 3 goes forwards
 
 ; ESTEPS
-M92 X160.00 Y160.00 Z1600.00 E476.5      ; Set steps per mm E476.5 FOR QR, 16ux
+ ; M92 X160.00 Y160.00 Z1600.00 E138.9      ; Set steps per mm E476.5 FOR BMG, 16ux
+M92 X160.00 Y160.00 Z1600.00 E415        ; Set steps per mm E476.5 FOR BMG, 16ux
 
-; M92 X160.00 Y160.00 Z1600.00 E195.54   ; Set steps per mm E195.54 ST FLINT 32ux
-; M92 X160.00 Y160.00 Z1600.00 E96.1     ; Set steps per mm E96.1 ST FLINT 16UX
-; M92 X160.00 Y160.00 Z1600.00 E953      ; Set steps per mm E476.5 FOR QR, 16ux
+ ; the below are form old configs
+ ; M92 X160.00 Y160.00 Z1600.00 E476.5    ; Set steps per mm E476.5 FOR QR, 16ux
+ ; M92 X160.00 Y160.00 Z1600.00 E195.54   ; Set steps per mm E195.54 ST FLINT 32ux
+ ; M92 X160.00 Y160.00 Z1600.00 E96.1     ; Set steps per mm E96.1 ST FLINT 16UX
+ ; M92 X160.00 Y160.00 Z1600.00 E953      ; Set steps per mm E476.5 FOR QR, 16ux
 
 ; SPEEDS
-; M566 Xn Yn Zn En Pn where Pn is the jerk policy, currently not set in config, consider using
-; M566 X600.00 Y600.00 Z12.00 E240.00    ; Set maximum instantaneous speed changes (mm/min) OLD not so good
-M566 X400.00 Y400.00 Z180.00 E360.00          ; Set maximum instantaneous speed changes (mm/min) jerk kinda high
+ ; SPEED CHGANGES
+ ; M566 Xn Yn Zn En Pn where Pn is the jerk policy, currently not set in config, consider using
+ ; M566 X900.00 Y900.00 Z12.00 E120.00      ; set maximum instantaneous speed changes (mm/min) DEFAULT CONFIG
+ ; M566 X200.00 Y200.00 Z120.00 E300.00     ; Set maximum instantaneous speed changes (mm/min) jerk kinda high Noman
+ ; M566 X500.00 Y500.00 Z60.00 E120.00     ; Set maximum instantaneous speed changes (mm/min) jerk kinda high Noman
+M566 X900.00 Y900.00 Z60.00 E120.00     ; Set maximum instantaneous speed changes (mm/min) jerk kinda high Noman
 
-; M203 X15000 Y15000 Z1500 E1500         ; Set maximum speeds (mm/min)
-M203 X9000.00 Y9000.00 Z1200.00 E6000    ; Set maximum speeds (mm/min) 
+
+; MAX SPEEDS
+ ; M203 X9000.00 Y9000.00 Z1200.00 E1200.00 ; set maximum speeds (mm/min) DEFAULT CONFIG
+ ; M203 X9000.00 Y9000.00 Z1200.00 E6000  ; Set maximum speeds (mm/min) 
+M203 X9000.00 Y9000.00 Z120.00 E3600    ; Reduced E via Wes Set maximum speeds (mm/min) 
+ ; M203 X6000.00 Y6000.00 Z120.00 E3600    ; Reduced E via Noman Set maximum speeds (mm/min)
+
 
 ;ACCELERATIONS
-; M201 X1100 Y1100 Z180 E480             ; Set accelerations (mm/s^2)
-M201 X1500.00 Y1500.00 Z180.00 E2400     ; Set accelerations (mm/s^2)
-; differnce between M204 and M201 is 
-; the M204 is the resultant  of the 2 components
-; M204 is absolute combination 
-; M204 P1200 T1200                       ; Set printing and travel accelerations
+ ; M201 X500.00 Y500.00 Z20.00 E250.00      ; set accelerations (mm/s^2) DEFAULT CONFIG
+M201 X500.00 Y500.00 Z60.00 E250.00              ; Set accelerations (mm/s^2)
+ ; M201 X1000.00 Y1000.00 Z180.00 E1000     ; from Wes
+ ; M201 X600.00 Y600.00 Z90.00 E1000     ; from Noman
 
-M84 S30                                  ; Set idle timeout
+
+ ; differnce between M204 and M201 is 
+ ; the M204 is the resultant  of the 2 components
+ ; M204 is absolute combination 
+ ; M204 P60000 T60000                       ; Set printing and travel accelerations
+
+M84 S0                                  ; DISABLE MOTOR IDLE CURRENT REDUCTION
 
 ; Axis Limits
 M208 X0 Y0 Z0 S1                         ; Set axis minima
-M208 X295 Y295 Z290 S0                   ; Set axis maxima
+M208 X276 Y284 Z280 S0                   ; Set axis maxima
 
 ; Endstops
 M574 X2 Y2 S0                            ; Set active low Endstops
-; X & Y endstops are at the MAX travel
+; M574 Z1 S1                               ; SET ENDSTOP Z MIN WITH SWITCH 
+M574 Z1 S2                               ; SET ENDSTOP Z MIN WITH SMART IR PROBE
+ 
+ ; X & Y endstops are at the MAX travel Z is at Z=0
 
 ; Z-Probe
-M574 Z1 S2                               ; Set endstops controlled by probe
-M558 P8 I1 R0.4 H5 F600 T6600            
-; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed from 
-; set Z probe to digital, 2mm dive height, 0.4 sec probe recovery time 
-; Z speed 8 mm/sec XY travel 100mm/min probe travel speed and set as Z endstop
-; was 
-; M558 P5 I1 R0.4 H5 F600 T6000          
-; Set Z probe type to effector and the dive height + speeds
-;
-G31 P500 X0 Y0 Z-0.02                  ; Set Z probe trigger value, offset and trigger height
+; M574 Z1 S2                               ; Set Z endstops controlled by probe COMMENTED OUT FOR ENDSTOP SWITCH
+ ; M558 P0 H5 F120 T6000                    ; SET ENDSTOP ONLY
+ ; M558 P8 I1 R0.4 H5 F420 T6600              
+ ; M558 P8 I1 R0.6 H5 F840 T7200            ; COMMENTED OUT FOR ENDSTOP SWITCH
+ ; Suggestions from Idris at PP, change to more senstive setting, reduce travel and speed from 
+ ;  set Z probe to digital, 2mm dive height, 0.4 sec probe recovery time 
+ ; Z speed 8 mm/sec XY travel 100mm/min probe travel speed and set as Z endstop
+ ; was 
+ ; M558 P5 I1 R0.4 H5 F600 T6000          
+ ; Set Z probe type to effector and the dive height + speeds
+ ; for mini IR probe
+ ; M558 P2 H5 F120 T6000                   ; set Z probe type to modulated and the dive height + speeds
+; M558 P1 H5 F120 T6000                   ; DID NOT WORK set Z probe type to modulated and the dive height + speeds
+; M558 P4 C2 F360 T6000 H3 R0.5           ; SET IR PROBE AS S DUNB ON-OFF SWITCH
+M558 P8 I0 R0.4 H2 F420 T6600  
+G31 P500 X0 Y31.5 Z1.52                 ; set Z probe trigger value, offset and trigger height
+ ;
+ ; G31 P500 X0 Y0 Z-0.045               ; Set Z probe trigger value, offset and trigger height
+
+; COMMENTED OUT FOR ENDSTOP SWITCH
 ; G31 Pnnn Xnnn Ynnn Znnn Cnnn Snnn
 ; Pnnn Trigger value
 ; Xnnn Probe X offset1
@@ -93,25 +122,32 @@ G31 P500 X0 Y0 Z-0.02                  ; Set Z probe trigger value, offset and t
 ; Snnn Calibration temperature 2
 ; Tnnn Z probe type to which these parameters apply, defaults to the current
 ; Z probe type as defined by M558 P parameter
-M557 X5:285 Y5:285 S70                   ; Define mesh grid
+M557 X0:276 Y34:284 S69:50                  ; Define mesh grid
+; COMMENTED OUT FOR ENDSTOP SWITCH
 
 ; ESTOP SWITCHES
 ; M581 T0 E0 S0 C0                           ; emergency stop on trigger, E0 switch, falling edge, apply at all times
 ; M581 T0 E1 S0 C0 
 
 ; Heaters
+; Heater 0  is the bed
 M305 P0 T100000 B4100 R4700              ; Set thermistor + ADC parameters for heater 0
 M143 H0 S120                             ; Set temperature limit for heater 0 to 120C
-M305 P1 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 1 NTC100K B3950
-; M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1 SG104 Themistor
+
+; Heater 1 is the Hotend 0
+; M305 P1 T100000 B3950 R4700              ; Set thermistor + ADC parameters for heater 1 NTC100K B3950
+M305 P1 T100000 B4725 C7.060000e-8 R4700 ; Set thermistor + ADC parameters for heater 1 SG104 Themistor
 M143 H1 S280                             ; Set temperature limit for heater 1 to 280C
 
 
 ; Fans
+
 M106 P0 H-1                              ; Set fan 0 value, PWM signal inversion and frequency. 
-                                         ; Part cooling fan, thermostatic control is turned not on
+; Part cooling fan, thermostatic control is turned not on
+
 M106 P1 S255 I0 F500 H1 T45              ; Set fan 1 value, PWM signal inversion and frequency. 
-                                         ; Thermostatic control is turned on
+; Thermostatic control is turned on
+
 ; Tools
 M563 P0 D0 H1                            ; Define tool 0
 G10 P0 X0 Y0 Z0                          ; Set tool 0 axis offsets
@@ -126,13 +162,17 @@ G10 P0 R0 S0                             ; Set initial tool 0 active and standby
 ; G10 P1 R0 S0                             ; Set initial tool 1 active and standby temperatures to 0C
 
 ; Automatic saving after power loss is not enabled
+; M911 S21.0 R23.0 P"M913 X0 Y0 G91 M83 G1 Z3 E-5 F1000"
+; M911 S11.0 R23.0 P"M913 X0 Y0 G91 M83 G1 Z3 E-5 F1000"
+
+
 
 ; Custom settings are not configured
 ; M918 P1 E4 F1000000                      ; enable the LCD 
 ; https://duet3d.dozuki.com/Wiki/Gcode#Section_M918_Configure_direct_connect_display
 
 ; set input-output to Marlin for compatibility
-; M555 P2
+M555 P2
 
 T0
 M501
