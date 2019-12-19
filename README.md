@@ -2,7 +2,7 @@
 
 This is an experimental port of dc42's RepRapFirmware for LPC1768/LPC1769 based boards. These are Panucatt Re-Arm, Azteeg X5 MiniWiFi, SKR 1.1, SKR 1.3, maybe some others.   
 
-My primary board is a Panucatt ReARM. I have also set this up on a SKR with BLTouch. I no longer have the Ender with the BLTouch.
+My primary board is a Panucatt ReARM. I have also set this up on a SKR with BLTouch. I no longer have the Ender with the BLTouch. The main level is ReARM. The folder named SKR has the SKR specific files in it.  
 
 I am putting my notes here as I go, hopefully to aid someone else and maybe use as a basis for formal documentation later. 
 
